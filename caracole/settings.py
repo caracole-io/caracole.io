@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
 
+    'pages',
+
     'bootstrap4',
     'ndh',
 ]

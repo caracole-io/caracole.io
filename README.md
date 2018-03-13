@@ -14,5 +14,5 @@ echo POSTGRES_PASSWORD=$(openssl rand -base64 32) >> .env
 echo SECRET_KEY=$(openssl rand -base64 32) >> .env
 echo DOMAIN_NAME=local >> .env
 . .env
-docker-compose up -d
+docker-compose up -d --build
 ```

@@ -1,0 +1,7 @@
+LICENSE
+README*
+*.in
+*.md
+*.orig
+*.yml
+.git

@@ -2,6 +2,7 @@ import os
 
 PROJECT = 'caracole'
 PROJECT_VERBOSE = PROJECT.capitalize()
+WAGTAIL_SITE_NAME = PROJECT_VERBOSE
 
 DOMAIN_NAME = os.environ.get('DOMAIN_NAME', 'io')
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')]
@@ -23,6 +24,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
+
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+    'modelcluster',
+    'taggit',
+
     'bootstrap4',
     'ndh',
 ]
@@ -35,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = f'{PROJECT}.urls'

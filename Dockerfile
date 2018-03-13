@@ -9,6 +9,7 @@ ADD requirements.txt ./
 
 ENV PYTHONPATH=/usr/lib/python3.6/site-packages
 RUN apk update -q && apk add -q --no-cache \
+    py3-pillow \
     py3-psycopg2 \
  && pip3 install --no-cache-dir -r requirements.txt \
     gunicorn

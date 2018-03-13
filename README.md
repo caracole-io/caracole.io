@@ -16,3 +16,5 @@ echo DOMAIN_NAME=local >> .env
 . .env
 docker-compose up -d --build
 ```
+
+You may then want to create an admin: `docker-compose exec app ./manage.py createsuperuser`

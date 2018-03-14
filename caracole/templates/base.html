@@ -6,6 +6,9 @@
 
 {% block navbarleft %}
 <li class="nav-item"><a class="nav-link" href="/pages">Pages</a></li>
+{% if request.user.is_authenticated %}<!-- TODO proper right management -->
+<li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
+{% endif %}
 {% endblock %}
 
 {% block content %}

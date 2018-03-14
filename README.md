@@ -13,6 +13,7 @@ Make sur caracole.local resolves to localhost, and
 echo POSTGRES_PASSWORD=$(openssl rand -base64 32) >> .env
 echo SECRET_KEY=$(openssl rand -base64 32) >> .env
 echo DOMAIN_NAME=local >> .env
+echo DEBUG=True >> .env
 . .env
 docker-compose up -d --build
 ```

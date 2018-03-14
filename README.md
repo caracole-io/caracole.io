@@ -7,7 +7,7 @@ This project needs a running [traefik](https://traefik.io) instance. If you don'
 
 ## Dev
 
-Make sur caracole.local resolves to localhost, and
+Make sure `caracole.local` resolves to `localhost`, and:
 
 ```
 echo POSTGRES_PASSWORD=$(openssl rand -base64 32) >> .env

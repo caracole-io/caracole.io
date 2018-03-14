@@ -15,6 +15,7 @@ DEBUG = environ.get('DEBUG', 'False').lower() == 'true'
 
 
 INSTALLED_APPS = [
+    PROJECT,
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

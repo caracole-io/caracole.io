@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'caracole.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DB = environ.get('DB', 'postgres')
+DB = environ.get('DB', 'db.sqlite3')
 DATABASES = {
     'default': {
         'ENGINE': f'django.db.backends.sqlite3',

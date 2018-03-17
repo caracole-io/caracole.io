@@ -1,17 +1,16 @@
-from os import environ
-from os.path import abspath, dirname, join
+import os
 
 PROJECT = 'caracole'
 PROJECT_VERBOSE = PROJECT.capitalize()
 
-DOMAIN_NAME = environ.get('DOMAIN_NAME', 'io')
-ALLOWED_HOSTS = [environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')]
+DOMAIN_NAME = os.environ.get('DOMAIN_NAME', 'io')
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')]
 ALLOWED_HOSTS += [f'www.{host}' for host in ALLOWED_HOSTS]
 
-BASE_DIR = dirname(dirname(abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = environ['SECRET_KEY']
-DEBUG = environ.get('DEBUG', 'False').lower() == 'true'
+SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 
 INSTALLED_APPS = [
@@ -22,7 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.humanize',
+    'django.contrib.sites',
     'bootstrap4',
     'ndh',
 ]
@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'caracole.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DB = environ.get('DB', 'db.sqlite3')
+DB = os.environ.get('DB', 'db.sqlite3')
 DATABASES = {
     'default': {
         'ENGINE': f'django.db.backends.sqlite3',
@@ -71,10 +71,10 @@ DATABASES = {
 if DB == 'postgres':
     DATABASES['default'].update(
         ENGINE='django.db.backends.postgresql',
-        NAME=environ.get('POSTGRES_DB', DB),
-        USER=environ.get('POSTGRES_USER', DB),
-        HOST=environ.get('POSTGRES_HOST', DB),
-        PASSWORD=environ['POSTGRES_PASSWORD'],
+        NAME=os.environ.get('POSTGRES_DB', DB),
+        USER=os.environ.get('POSTGRES_USER', DB),
+        HOST=os.environ.get('POSTGRES_HOST', DB),
+        PASSWORD=os.environ['POSTGRES_PASSWORD'],
     )
 
 AUTH_PASSWORD_VALIDATORS = [

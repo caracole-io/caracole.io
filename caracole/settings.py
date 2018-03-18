@@ -55,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'caracole.wsgi.application'
+WSGI_APPLICATION = f'{PROJECT}.wsgi.application'
 
 
 # Database
@@ -65,7 +65,7 @@ DB = os.environ.get('DB', 'db.sqlite3')
 DATABASES = {
     'default': {
         'ENGINE': f'django.db.backends.sqlite3',
-        'NAME': join(BASE_DIR, DB),
+        'NAME': os.path.join(BASE_DIR, DB),
     }
 }
 if DB == 'postgres':
@@ -104,3 +104,13 @@ MEDIA_ROOT = '/srv/media/'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = '/srv/static/'
+
+if os.environ.get('MEMCACHED', 'False').lower() == 'true':
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': 'memcached:11211',
+        }
+    }
+
+

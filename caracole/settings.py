@@ -106,6 +106,14 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = '/srv/static/'
 
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST = 'mail.gandi.net'
+EMAIL_HOST_USER = 'majo@caracole.io'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+DEFAULT_FROM_EMAIL = f'{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>'
+SERVER_EMAIL = f'Server {DEFAULT_FROM_EMAIL}'
+
 if os.environ.get('MEMCACHED', 'False').lower() == 'true':
     CACHES = {
         'default': {

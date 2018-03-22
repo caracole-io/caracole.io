@@ -12,6 +12,7 @@ Make sure `caracole.local` resolves to `localhost`, and:
 ```
 echo POSTGRES_PASSWORD=$(openssl rand -base64 32) >> .env
 echo SECRET_KEY=$(openssl rand -base64 32) >> .env
+echo EMAIL_HOST_PASSWORD="the real smtp password" >> .env
 echo DOMAIN_NAME=local >> .env
 echo DEBUG=True >> .env
 . .env

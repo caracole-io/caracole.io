@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
 
+    path('videgrenier/', include('videgrenier.urls')),
+
     path('', TemplateView.as_view(template_name='base.html')),
 ]

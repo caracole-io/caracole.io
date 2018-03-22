@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'bootstrap4',
     'ndh',
+    'videgrenier',
 ]
 
 MIDDLEWARE = [
@@ -113,4 +114,4 @@ if os.environ.get('MEMCACHED', 'False').lower() == 'true':
         }
     }
 
-
+VIDE_GRENIER_OPEN = True

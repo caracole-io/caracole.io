@@ -16,6 +16,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 INSTALLED_APPS = [
     PROJECT,
     'django.contrib.admin',
+    'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -113,6 +114,7 @@ EMAIL_HOST_USER = 'majo@caracole.io'
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 DEFAULT_FROM_EMAIL = f'{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>'
 SERVER_EMAIL = f'Server {DEFAULT_FROM_EMAIL}'
+REPLY_TO = 'webmaster@caracole.io'
 
 if os.environ.get('MEMCACHED', 'False').lower() == 'true':
     CACHES = {
@@ -121,5 +123,8 @@ if os.environ.get('MEMCACHED', 'False').lower() == 'true':
             'LOCATION': 'memcached:11211',
         }
     }
+
+ACCOUNT_ACTIVATION_DAYS = 15
+REGISTRATION_AUTO_LOGIN = True
 
 VIDE_GRENIER_OPEN = True

@@ -1,4 +1,5 @@
 import os
+from datetime import date
 
 PROJECT = 'caracole'
 PROJECT_VERBOSE = PROJECT.capitalize()

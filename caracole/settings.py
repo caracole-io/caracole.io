@@ -5,7 +5,8 @@ PROJECT = 'caracole'
 PROJECT_VERBOSE = PROJECT.capitalize()
 
 DOMAIN_NAME = os.environ.get('DOMAIN_NAME', 'io')
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')]
+HOSTNAME = os.environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')
+ALLOWED_HOSTS = [HOSTNAME]
 ALLOWED_HOSTS += [f'www.{host}' for host in ALLOWED_HOSTS]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -112,11 +113,12 @@ STATIC_ROOT = '/srv/static/'
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST = 'mail.gandi.net'
-EMAIL_HOST_USER = 'majo@caracole.io'
+EMAIL_HOST_USER = f'majo@{HOSTNAME}'
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 DEFAULT_FROM_EMAIL = f'{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>'
 SERVER_EMAIL = f'Server {DEFAULT_FROM_EMAIL}'
-REPLY_TO = 'webmaster@caracole.io'
+REPLY_TO = f'webmaster@{HOSTNAME}'
+ADMINS = [(f'{PROJECT} Webmasters', 'webmaster@{HOSTNAME}')]
 
 if os.environ.get('MEMCACHED', 'False').lower() == 'true':
     CACHES = {

@@ -15,6 +15,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 INSTALLED_APPS = [
     PROJECT,
+    'ndh',
     'django.contrib.admin',
     'registration',
     'django.contrib.auth',
@@ -25,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'bootstrap4',
-    'ndh',
     'videgrenier',
 ]
 
@@ -52,6 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'ndh.context_processors.settings_constants',
             ],
         },
     },
@@ -127,4 +128,12 @@ if os.environ.get('MEMCACHED', 'False').lower() == 'true':
 ACCOUNT_ACTIVATION_DAYS = 15
 REGISTRATION_AUTO_LOGIN = True
 
-VIDE_GRENIER_OPEN = True
+DATES_VIDE_GRENIER = {
+    'open': date(2018, 4, 4),
+    'close': date(2018, 6, 20),
+    'event': date(2018, 6, 24),
+}
+
+NDH_TEMPLATES_SETTINGS = [
+    'DATES_VIDE_GRENIER',
+]

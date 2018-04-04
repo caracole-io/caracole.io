@@ -109,6 +109,7 @@ MEDIA_ROOT = '/srv/media/'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = '/srv/static/'
+LOGIN_REDIRECT_URL = '/'
 
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465

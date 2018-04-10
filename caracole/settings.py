@@ -62,10 +62,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = f'{PROJECT}.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DB = os.environ.get('DB', 'db.sqlite3')
 DATABASES = {
     'default': {
@@ -97,13 +93,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'fr-FR'
-TIME_ZONE = 'Europe/Paris'
+LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'fr-FR')
+TIME_ZONE = os.environ.get('TIME_ZONE', 'Europe/Paris')
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-SITE_ID = 1
+SITE_ID = int(os.environ.get('SITE_ID', 1))
 
 MEDIA_ROOT = '/srv/media/'
 MEDIA_URL = '/media/'
@@ -119,7 +115,7 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 DEFAULT_FROM_EMAIL = f'{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>'
 SERVER_EMAIL = f'Server {DEFAULT_FROM_EMAIL}'
 REPLY_TO = f'webmaster@{HOSTNAME}'
-ADMINS = [(f'{PROJECT} Webmasters', 'webmaster@{HOSTNAME}')]
+ADMINS = [(f'{PROJECT_VERBOSE} Webmasters', 'webmaster@{HOSTNAME}')]
 
 if os.environ.get('MEMCACHED', 'False').lower() == 'true':
     CACHES = {
@@ -128,6 +124,10 @@ if os.environ.get('MEMCACHED', 'False').lower() == 'true':
             'LOCATION': 'memcached:11211',
         }
     }
+
+if os.environ.get('RAVEN', 'False').lower() == 'true':
+    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+    RAVEN_CONFIG = {'dsn': os.environ['DSN']}
 
 ACCOUNT_ACTIVATION_DAYS = 15
 REGISTRATION_AUTO_LOGIN = True

@@ -26,6 +26,7 @@ services:
     environment:
       - DB=postgres
       - MEMCACHED=True
+      - RAVEN=True
     networks:
       - traefik
       - default

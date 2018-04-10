@@ -16,7 +16,7 @@ services:
     image: memcached:alpine
     restart: unless-stopped
   app:
-    image: caracole-io/caracole.io
+    image: caracole/caracole.io
     build: .
     restart: unless-stopped
     volumes:

@@ -125,7 +125,7 @@ if os.environ.get('MEMCACHED', 'False').lower() == 'true':
         }
     }
 
-if os.environ.get('RAVEN', 'False').lower() == 'true':
+if not DEBUG and os.environ.get('RAVEN', 'False').lower() == 'true':
     INSTALLED_APPS.append('raven.contrib.django.raven_compat')
     RAVEN_CONFIG = {'dsn': os.environ['DSN']}
 

@@ -28,8 +28,7 @@ And go on http://localhost:8000
 
 ### Reverse Proxy
 
-This project needs a running [traefik](https://traefik.io) instance.
-You can use https://github.com/nim65s/traefik-dev.
+This website needs a reverse proxy, like [proxyta.net](https://framagit.org/nim65s/proxyta.net)
 
 ### Configuratoin
 
@@ -56,4 +55,4 @@ You may then want to create an admin: `docker-compose exec app ./manage.py creat
 
 ## Production
 
-Same as Integration, but with with https://github.com/nim65s/traefik-prod, a proper `DOMAIN_NAME`, and not `DEBUG=True`
+Same as Integration, but with with the prod-le version of [proxyta.net](https://framagit.org/nim65s/proxyta.net), a proper `DOMAIN_NAME`, and not `DEBUG=True`

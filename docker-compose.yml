@@ -45,7 +45,7 @@ services:
       - proxytanet
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}; PathPrefix: /static, /media"
+      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}, www.caracole.${DOMAIN_NAME:-io}, caracole.totheweb.fr; PathPrefix: /static, /media"
 
 networks:
   proxytanet:

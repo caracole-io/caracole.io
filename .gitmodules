@@ -1,0 +1,3 @@
+[submodule "videgrenier"]
+	path = submodules/videgrenier
+	url = https://github.com/caracole-io/videgrenier.git

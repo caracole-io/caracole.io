@@ -16,7 +16,7 @@ services:
     image: memcached:alpine
     restart: unless-stopped
   app:
-    image: caracole-io/caracole.io
+    image: caracole/caracole.io
     build: .
     restart: unless-stopped
     volumes:
@@ -25,24 +25,28 @@ services:
       - .env
     environment:
       - DB=postgres
+      - MEMCACHED=True
+      - RAVEN=True
     networks:
-      - traefik
+      - proxytanet
       - default
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}"
-      - "traefik.docker.network=traefik"
+      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}, www.caracole.${DOMAIN_NAME:-io}, caracole.totheweb.fr"
+      - "traefik.frontend.redirect.regex=^https://caracole.totheweb.fr/(.*)"
+      - "traefik.frontend.redirect.replacement=https://caracole.io/$$1"
+      - "traefik.docker.network=proxytanet"
   nginx:
     image: nim65s/ndh:nginx
     restart: unless-stopped
     volumes:
       - "srv:/srv"
     networks:
-      - traefik
+      - proxytanet
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}; PathPrefix: /static, /media"
+      - "traefik.frontend.rule=Host: caracole.${DOMAIN_NAME:-io}, www.caracole.${DOMAIN_NAME:-io}, caracole.totheweb.fr; PathPrefix: /static, /media"
 
 networks:
-  traefik:
+  proxytanet:
     external: true

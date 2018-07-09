@@ -10,6 +10,11 @@ django-registration-redux = "*"
 django = "<2.1"
 
 [dev-packages]
+"flake8" = "*"
+python-coveralls = "*"
+safety = "*"
+"psycopg2" = "*"
+raven = "*"
 
 [requires]
 python_version = "3.6"

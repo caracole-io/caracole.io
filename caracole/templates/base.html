@@ -7,6 +7,15 @@
 {% block navbarleft %}
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+    Commissions
+  </a>
+  <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
+      <a class="dropdown-item" href="/pages/comcom">ComCom</a>
+      <a class="dropdown-item" href="/pages/bus">Bus</a>
+      <a class="dropdown-item" href="/pages/chorale">Chorale</a>
+  </div>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
     Vide Grenier
   </a>
   <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
@@ -20,10 +29,14 @@
       {% endif %}
   </div>
 </li>
+
+{% if request.user.is_authenticated %}<!-- TODO proper right management -->
+<li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
+{% endif %}
 {% endblock %}
 
 {% block content %}
 <h1>Hello Caracole</h1>
-<p>Site en constructions…</p>
+<p>Site en construction…</p>
 <p><a href="http://caracole.le-pic.org/caracole-v4/accueil/agenda.2.4.php">Aller sur l’ancier site</a></p>
 {% endblock %}

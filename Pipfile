@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ndh = "*"
+wagtail = "*"
+django-registration-redux = "*"
+django = "<2.1"
+
+[dev-packages]
+"flake8" = "*"
+python-coveralls = "*"
+safety = "*"
+"psycopg2" = "*"
+raven = "*"
+
+[requires]
+python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true

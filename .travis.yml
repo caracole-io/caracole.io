@@ -6,7 +6,8 @@ services:
   - postgresql
   - docker
 install:
-  - pip install -r requirements.txt flake8 python-coveralls safety psycopg2 raven
+  - pip install pipenv
+  - pipenv install --dev
 env:
   - SECRET_KEY='pipo' EMAIL_HOST_PASSWORD='pipo' POSTGRES_HOST='localhost' POSTGRES_PASSWORD='' RAVEN=True DSN=''
 script:

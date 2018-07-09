@@ -7,7 +7,7 @@ WAGTAIL_SITE_NAME = PROJECT_VERBOSE
 
 DOMAIN_NAME = os.environ.get('DOMAIN_NAME', 'io')
 HOSTNAME = os.environ.get('ALLOWED_HOST', f'{PROJECT}.{DOMAIN_NAME}')
-ALLOWED_HOSTS = [HOSTNAME]
+ALLOWED_HOSTS = [HOSTNAME, f'{HOSTNAME}:8000']
 ALLOWED_HOSTS += [f'www.{host}' for host in ALLOWED_HOSTS]
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

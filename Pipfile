@@ -10,6 +10,8 @@ django-registration-redux = "*"
 django = "<2.1"
 pillow = "==4.3.0"  # Pinned to alpine 3.8's version
 olefile = "==0.43"  # Pinned to alpine 3.8's version
+django-extensions = "*"
+XlsxWriter = "*"
 
 [dev-packages]
 "flake8" = "*"
@@ -20,6 +22,3 @@ raven = "*"
 
 [requires]
 python_version = "3.6"
-
-[pipenv]
-allow_prereleases = true

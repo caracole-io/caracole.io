@@ -1,9 +1,10 @@
-FROM python:alpine3.7
+FROM python:3.6-alpine
 
 EXPOSE 8000
 
 RUN mkdir /app
 WORKDIR /app
+
 
 RUN apk update -q && apk add -q --no-cache \
     py3-pillow \
@@ -15,10 +16,12 @@ RUN apk update -q && apk add -q --no-cache \
     raven \
     requests
 
-ADD Pipfile Pipfile.lock ./
-RUN pipenv install --system --deploy || true
 
 ENV PYTHONPATH=/usr/lib/python3.6/site-packages
+RUN rm /usr/local/bin/pip3 /usr/local/bin/pip
+
+ADD Pipfile Pipfile.lock ./
+RUN pipenv install --system --deploy
 
 ADD . .
 

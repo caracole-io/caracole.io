@@ -1,42 +1,237 @@
 {% extends 'ndh.html' %}
 {% load static %}
 
+{% block style %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/caracole.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/stylesheet.css' %}">
+<link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+{% endblock %}
+
 {% block pagetitle %}Caracole - {% block title %}{{ title }}{% endblock %}{% endblock %}
 {% block sitetitle %}Caracole{% endblock %}
 
-{% block navbarleft %}
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-    Commissions
-  </a>
-  <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
-      <a class="dropdown-item" href="/pages/comcom">ComCom</a>
-      <a class="dropdown-item" href="/pages/bus">Bus</a>
-      <a class="dropdown-item" href="/pages/chorale">Chorale</a>
-  </div>
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-    Vide Grenier
-  </a>
-  <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
-      <a class="dropdown-item" href="{% url 'videgrenier:home' %}">Accueil</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:reservation' %}">Réservation</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:plan' %}">Plan d’accès</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:reglement' %}">Règlement</a>
-      {% if request.user.is_staff %}
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="{% url 'videgrenier:reservation-list' %}">Administration</a>
-      {% endif %}
-  </div>
-</li>
+{% block header_navbar %}
+<!-- header -->
+<header id="header">
+  <!-- Barre de navigation -->
+  <nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <nav class="navbar navbar-expand-lg navbar-light z-index">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caracole</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="pages/association">L'association</a>
+                  <a class="dropdown-item" href="pages/statuts">Les statuts</a>
+                  <a class="dropdown-item" href="pages/gouvernance">La gouvernance</a>
+                  <a class="dropdown-item" href="pages/documents_officiels">Les documents officiels</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commissions</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="pages/cabas">Cabas</a>
+                  <a class="dropdown-item" href="pages/carabricole">C@rabricole</a>
+                  <a class="dropdown-item" href="pages/chorale">Chorale</a>
+                  <a class="dropdown-item" href="pages/evenements">&Eacute;vénements</a>
+                  <a class="dropdown-item" href="pages/jardin_partage">Jardin Partagé</a>
+                </div>
+              </li>
 
-{% if request.user.is_authenticated %}<!-- TODO proper right management -->
-<li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
-{% endif %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                  Vide Grenier
+                </a>
+                <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
+                  <a class="dropdown-item" href="{% url 'videgrenier:home' %}">Accueil</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reservation' %}">Réservation</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:plan' %}">Plan d’accès</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reglement' %}">Règlement</a>
+                  {% if request.user.is_staff %}
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reservation-list' %}">Administration</a>
+                  {% endif %}
+                </div>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="{% url 'agenda' %}">Agenda</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Contacts</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Le Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'liens' %}">Liens</a></li>
+
+              {% if request.user.is_authenticated %}<!-- TODO proper right management -->
+              <li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
+              {% if request.user.is_superuser %}
+              <li class="nav-item"><a class="nav-link" href="/cms">admin</a></li>
+              {% endif %}
+              {% endif %}
+
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+  <!-- / Barre navigation -->
+  <!-- / Header -->
+</header>
 {% endblock %}
 
-{% block content %}
-<h1>Hello Caracole</h1>
-<p>Site en construction…</p>
-<p><a href="http://caracole.le-pic.org/caracole-v4/accueil/agenda.2.4.php">Aller sur l’ancier site</a></p>
+{% block main_content %}
+<!-- Breadcrumb et recherche -->
+<section>
+  <div class="container">
+    <div class="row justify-content-between">
+      <!-- TODO -->
+      <!-- https://github.com/prymitive/bootstrap-breadcrumbs ? -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Accueil</li>
+        </ol>
+      </nav>
+      <div class="col-4">
+        <form class="form-inline justify-content-end">
+          <!-- TODO -->
+          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="sepBreadcrumb">&nbsp;</div>
+  </div>
+</section>
+<!-- / Breadcrumb et recherche -->
+<!-- Synthèse Caracole -->
+<main>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><h1>Craracole ! Qu'es aquo ?</h1></div>
+        <div class="col-md-8">
+          <div class="lettrine multicol"><p>Dicendi debeo more moderatur animadvertere partem aliquis fortius moderatur nostro robustioribus neque admiratus refutaremus illum meum licentiam admiratus hunc quod orationi et meae quod tuum tali id hunc agam poteratis fortius poteratis agam te enim partem adulescentis male in illa more postulabat et tuus Atratino neque magis ex potissimum.</p><p>Licentiam lenius et robustioribus tuum orationi sum robustioribus hunc ex pudor decebat et illa nostro aliquis pudor patiebatur tuli tuli neque tuum et potissimum magis magis illum male quidem et meae dicendi pudor decebat hunc Neque et admiratus dicendi agam quidem esse accusationis illa male quidem et Atratine illum dicendi aliquanto.</p>
+            <p>Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiae oppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.<a href=""><i class="fa fa-plus-circle"></i></a></p>
+          </div>
+        </div>
+        <div class="col-md-4"><img src="img/escargot.gif" alt="caracole"/></div>
+      </div>
+    </div>
+  </section>
+  <!-- / Synthèse Caracole -->
+  <div class="container"><div class="sep">&nbsp;</div></div>
+  <!-- Vidéo & actualités -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3><i class="fa fa-video-camera"></i> Sandrine nous parle de Caracole</h3>
+          <img class="img-fluid mb-3" src="img/video-700-394.png" alt="vidéo"/>
+        </div>
+        <div class="col-md-4 agenda">
+          <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>
+          <ul class="list-unstyled">
+            <li class="media">
+              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
+              <div class="media-body">
+                <!-- Affichage 3 derniers événements -->
+                <p class="dateEvent">Jeudi 25 octobre 2018 - 14H</p>
+                <a href=""><h6 class="mt-0 mb-1">Soutien aux faucheurs</h6></a>
+                <!-- Extrait 95 caractères -->
+                <p>Ideoque fertur neminem aliquando ob haec vel similia poenae addictum oblato de more elogio revo<a href="#"></a></p>
+              </div>
+            </li>
+            <li class="media my-4">
+              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
+              <div class="media-body">
+                <p class="dateEvent">samedi 13 novembre 2018 - 20H</p>
+                <a href=""><h6 class="mt-0 mb-1">Projection Floréal</h6></a>
+                <!-- Extrait 95 caractères -->
+                <p>factitarunt. et exitiale hoc vitium, quod in aliis non numquam intepescit, in illo aetatis prog<a href="#"></a></p>
+              </div>
+            </li>
+            <li class="media">
+              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
+              <div class="media-body">
+                <p class="dateEvent">samedi 16 décembre 2018 - 19H</p>
+                <a href=""><h6 class="mt-0 mb-1">Arrivée Père Noel</h6></a>
+                <!-- Extrait 95 caractères -->
+                <p>Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter vuc<a href="#"></a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Vidéo & actualités -->
+  <div class="container"><div class="sep">&nbsp;</div></div>
+  <!-- Affichage 3 derniers articles "A la une" -->
+  <section class="nouvelles">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-3"><h2>Les articles récents</h2></div>
+        <div class="col-md-4">
+          <a href="#"><h3>Cumque pertinacius ut legum</h3></a>
+          <img class="mb-3" src="img/350x150.png" alt="Les Cabas de Caracole"/>
+          <!-- Affichage extrait 50 mots -->
+          <p>Spatio cum consuetudo Scaevola ceteris maiorum se spatio Turpis se minime si et neque in ut res in Turpis turpes est quis sumus consuetudo et causa contra publicam de loco in iam rei neque amicitia ceteris iam ceteris eo casus turpes Deflexit eo futuros causa minime quis causa longe cum<a href=""></a></p>
+        </div>
+        <div class="col-md-4">
+          <a href="#"><h3>Et eodem impetu Domitianum</h3></a>
+          <img class="mb-3" src="img/350x150.png" alt="la chorale de Caracole"/>
+          <!-- Affichage extrait 50 mots -->
+          <p>Cela ressemblait aux gros ordinateurs que David avait pu voir dans des films de science fiction. Beaucoup de petites lumières indiquaient qu’il était en fonction. À la base, une sorte d’aquarium avait été installé tout autour. Certainement le système de refroidissement car des bulles montai<a href=""></a></p>
+        </div>
+        <div class="col-md-4">
+          <a href="#"><h3>Vide, quantum, inquam, fallare</h3></a>
+          <img class="mb-3" src="img/350x150.png" alt="c@rabricole"/>
+          <!-- Affichage extrait 50 mots -->
+          <p>In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit<a href=""></a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Affichage 3 derniers articles "A la une" -->
+</main>
+<div class="container"><div class="sep">&nbsp;</div></div>
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="media">
+          <img class="mr-3" src="img/logo.gif" alt="logo caracole">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Caracole</h5>
+            <p>73 chemin Mange Pommes<br>31520 Ramonville Saint-Agne</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-unstyled">
+          <li><i class="fa fa-phone-square"></i>  04 66 45 12 33</li>
+          <li><a href="http://twitter.com/caracole_io" target="_blank"><i class="fa fa-twitter-square"></i>  twitter.com/caracole_io</a></li>
+          <li><a href="http://www.facebook.com/caracole.io" target="_blank"><i class="fa fa-facebook-square"></i>  www.facebook.com/caracole.io</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <p>© Association Caracole - Tous droits réservés</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- / footer -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 {% endblock %}

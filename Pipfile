@@ -8,6 +8,7 @@ ndh = "*"
 wagtail = "*"
 django-registration-redux = "*"
 django = "<2.1"
+pillow = "==4.3.0"  # Pinned to python:3.6-alpine's version
 
 [dev-packages]
 "flake8" = "*"

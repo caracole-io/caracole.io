@@ -3,4 +3,4 @@
 	url = ../videgrenier.git
 [submodule "submodules/circuitscourts"]
 	path = submodules/circuitscourts
-	url = ../cuitscourts.git
+	url = ../circuitscourts.git

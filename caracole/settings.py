@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
 
+    'django_extensions',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -47,7 +49,9 @@ INSTALLED_APPS = [
     'pages',
 
     'bootstrap4',
+
     'videgrenier',
+    'floreal',
 ]
 
 MIDDLEWARE = [

@@ -1,3 +1,6 @@
 [submodule "videgrenier"]
 	path = submodules/videgrenier
-	url = https://github.com/caracole-io/videgrenier.git
+	url = ../videgrenier.git
+[submodule "submodules/circuitscourts"]
+	path = submodules/circuitscourts
+	url = ../circuitscourts.git

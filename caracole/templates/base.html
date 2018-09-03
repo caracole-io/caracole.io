@@ -14,6 +14,21 @@
       <a class="dropdown-item" href="/pages/bus">Bus</a>
       <a class="dropdown-item" href="/pages/chorale">Chorale</a>
   </div>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" id="circuitscourtsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+    Circuits Courts
+  </a>
+  <div class="dropdown-menu" aria-labelledby="circuitscourtsDropdown">
+      <a class="dropdown-item" href="{% url 'circuitscourts:index' %}">Accueil</a>
+      <a class="dropdown-item" href="{% url 'circuitscourts:view_history' %}">Votre Historique</a>
+      <a class="dropdown-item" href="{% url 'circuitscourts:charte' %}">Charte</a>
+      {% if request.user.is_staff %}
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="{% url 'circuitscourts:view_journal' %}">Journaux</a>
+      {% endif %}
+  </div>
+</li>
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
     Vide Grenier

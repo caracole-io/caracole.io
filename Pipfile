@@ -17,6 +17,7 @@ python-coveralls = "*"
 safety = "*"
 "psycopg2" = "*"
 raven = "*"
+yapf = "*"
 
 [requires]
 python_version = "3.6"

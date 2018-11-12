@@ -15,7 +15,7 @@ olefile = "==0.43"  # Pinned to alpine 3.8's version
 "flake8" = "*"
 python-coveralls = "*"
 safety = "*"
-"psycopg2" = "*"
+"psycopg2-binary" = "*"
 raven = "*"
 yapf = "*"
 

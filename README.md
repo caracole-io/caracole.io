@@ -32,13 +32,12 @@ This website needs a reverse proxy, like [proxyta.net](https://framagit.org/nim6
 
 ### Configuratoin
 
-Make sure `caracole.local` resolves to `localhost`, and:
 
 ```
 echo POSTGRES_PASSWORD=$(openssl rand -base64 32) >> .env
 echo SECRET_KEY=$(openssl rand -base64 32) >> .env
 echo EMAIL_HOST_PASSWORD="the real smtp password" >> .env
-echo DOMAIN_NAME=local >> .env
+echo DOMAIN_NAME=localhost >> .env
 echo DEBUG=True >> .env
 . .env
 ```
@@ -49,7 +48,7 @@ echo DEBUG=True >> .env
 docker-compose up -d --build
 ```
 
-And go on http://caracole.local
+And go on http://caracole.localhost
 
 You may then want to create an admin: `docker-compose exec app ./manage.py createsuperuser`
 

@@ -1,5 +1,6 @@
 {% extends 'ndh.html' %}
 {% load static %}
+{% load wagtailuserbar %}
 
 {% block style %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -91,4 +92,5 @@
 <script src="{% static 'js/jquery.easing.min.js' %}"></script>
 <script src="{% static 'js/wow.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+{% wagtailuserbar %}
 {% endblock %}

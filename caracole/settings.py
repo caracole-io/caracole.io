@@ -117,10 +117,10 @@ USE_TZ = True
 
 SITE_ID = int(os.environ.get('SITE_ID', 1))
 
-MEDIA_ROOT = '/srv/media/'
+MEDIA_ROOT = f'/srv/{PROJECT}/media/'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = '/srv/static/'
+STATIC_ROOT = f'/srv/{PROJECT}/static/'
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_USE_SSL = True

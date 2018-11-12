@@ -4,8 +4,8 @@ from wagtail.core.models import Page
 from wagtail.search import index
 
 
-class DefaultPage(Page):
-    body = RichTextField()
+class Acceuil(Page):
+    body = RichTextField('texte', blank=True)
 
     search_fields = Page.search_fields + [index.SearchField('body')]
-    content_panels = Page.content_panels + [FieldPanel('body')]
+    content_panels = Page.content_panels + [FieldPanel('body', classname='full')]

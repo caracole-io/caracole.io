@@ -19,5 +19,5 @@ urlpatterns = [
     path('liens', TemplateView.as_view(template_name='liens.html'), name='liens'),  # TODO
     path('videgrenier/', include('videgrenier.urls')),
     path('vide-grenier/', RedirectView.as_view(url='/videgrenier/', permanent=True)),
-    path('', TemplateView.as_view(template_name='acceuil.html')),
+    path('', RedirectView.as_view(url='/pages/acceuil')),
 ]

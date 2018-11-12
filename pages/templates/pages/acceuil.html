@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static wagtailcore_tags %}
 
 {% block title %}Acceuil{% endblock %}
 
@@ -53,10 +53,8 @@
           </div>
         </div>
         <div class="col-md-4">
-          <h2>Caracole ! Qu'es aquo ?</h2>
-          <p>En 2003 quelques illumin&eacute;s d&eacute;cident d'acheter un bus pour aller faire une vir&eacute;e (humanitaro-touristique) en Albanie. Ils fondent une association qui va g&eacute;rer le Saviem S57M, appell&eacute;e &agrave; caracoler au long des routes.</p>
-          <p>Sous la houlette de bricoleurs, la b&ecirc;te devient autonome portant sur son dos, couchage, cuisine et autres imp&eacute;diments, tel un escargot portant sa coquille - en castillan "el caracol"...</p>
-          <p class="mb-5">Aujourd'hui, Caracole c'est : une chorale, des circuits-courts, un car@bricole, un jardin partag&eacute; et beaucoup, beaucoup d'autres choses.</p>
+          <h2>{{ page.title }}</h2>
+          {{ page.body|richtext }}
           <a class="btn btn-outline-success" href="pages/association"><i class="fa fa-sign-out"></i> En savoir plus...</a>
           <img src="{% static 'img/escargot.png' %}" class="mb-2" alt="escargot"/>
         </div>

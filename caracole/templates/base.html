@@ -28,7 +28,7 @@
               <li class="nav-item active"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caracole</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div id="menuCaracole" class="dropdown-menu" aria-labelledby="menuCaracole">
                   <a class="dropdown-item" href="pages/association">L'association</a>
                   <a class="dropdown-item" href="pages/statuts">Les statuts</a>
                   <a class="dropdown-item" href="pages/gouvernance">La gouvernance</a>
@@ -37,7 +37,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commissions</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div id="menuCommissions" class="dropdown-menu" aria-labelledby="menuCommissions">
                   <a class="dropdown-item" href="pages/cabas">Cabas</a>
                   <a class="dropdown-item" href="pages/carabricole">C@rabricole</a>
                   <a class="dropdown-item" href="pages/chorale">Chorale</a>
@@ -46,6 +46,7 @@
                 </div>
               </li>
 
+              <!--
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                   Vide Grenier
@@ -61,6 +62,7 @@
                   {% endif %}
                 </div>
               </li>
+              -->
 
               <li class="nav-item"><a class="nav-link" href="{% url 'agenda' %}">Agenda</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Contacts</a></li>
@@ -111,87 +113,108 @@
 <!-- / Breadcrumb et recherche -->
 <!-- Synthèse Caracole -->
 <main>
-  <section>
+  <section class="mt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-12"><h1>Craracole ! Qu'es aquo ?</h1></div>
         <div class="col-md-8">
-          <div class="lettrine multicol"><p>Dicendi debeo more moderatur animadvertere partem aliquis fortius moderatur nostro robustioribus neque admiratus refutaremus illum meum licentiam admiratus hunc quod orationi et meae quod tuum tali id hunc agam poteratis fortius poteratis agam te enim partem adulescentis male in illa more postulabat et tuus Atratino neque magis ex potissimum.</p><p>Licentiam lenius et robustioribus tuum orationi sum robustioribus hunc ex pudor decebat et illa nostro aliquis pudor patiebatur tuli tuli neque tuum et potissimum magis magis illum male quidem et meae dicendi pudor decebat hunc Neque et admiratus dicendi agam quidem esse accusationis illa male quidem et Atratine illum dicendi aliquanto.</p>
-            <p>Nec sane haec sola pernicies orientem diversis cladibus adfligebat. Namque et Isauri, quibus est usitatum saepe pacari saepeque inopinis excursibus cuncta miscere, ex latrociniis occultis et raris, alente inpunitate adulescentem in peius audaciam ad bella gravia proruperunt, diu quidem perduelles spiritus inrequietis motibus erigentes, hac tamen indignitate perciti vehementer, ut iactitabant, quod eorum capiti quidam consortes apud Iconium Pisidiae oppidum in amphitheatrali spectaculo feris praedatricibus obiecti sunt praeter morem.<a href=""><i class="fa fa-plus-circle"></i></a></p>
+          <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+              {% for item in carousel %}
+              <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+              {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+              {% for item in carousel %}
+              <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                <img class="d-block w-100" src="{{ item.img }}" alt="{{ item.alt }}">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>{{ carousel.title }}</h3>
+                  <p>{{ carousel.text }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
-        <div class="col-md-4"><img src="{% static 'img/escargot.gif' %}" alt="caracole"/></div>
+        <div class="col-md-4">
+          <h2>Caracole ! Qu'es aquo ?</h2>
+          <p>En 2003 quelques illumin&eacute;s d&eacute;cident d'acheter un bus pour aller faire une vir&eacute;e (humanitaro-touristique) en Albanie. Ils fondent une association qui va g&eacute;rer le Saviem S57M, appell&eacute;e &agrave; caracoler au long des routes.</p>
+          <p>Sous la houlette de bricoleurs, la b&ecirc;te devient autonome portant sur son dos, couchage, cuisine et autres imp&eacute;diments, tel un escargot portant sa coquille - en castillan "el caracol"...</p>
+          <p class="mb-5">Aujourd'hui, Caracole c'est : une chorale, des circuits-courts, un car@bricole, un jardin partag&eacute; et beaucoup, beaucoup d'autres choses.</p>
+          <a class="btn btn-outline-success" href="pages/association"><i class="fa fa-sign-out"></i> En savoir plus...</a>
+          <img src="{% static 'img/escargot.png' %}" class="mb-2" alt="escargot"/>
+        </div>
       </div>
     </div>
   </section>
   <!-- / Synthèse Caracole -->
-  <div class="container"><div class="sep">&nbsp;</div></div>
   <!-- Vidéo & actualités -->
-  <section>
+  <section class="mt-5">
     <div class="container">
       <div class="row">
+        <div class="col-md-12"><div class="titreRubrique">L'actu du moment</div></div>
         <div class="col-md-8">
-          <h3><i class="fa fa-video-camera"></i> Sandrine nous parle de Caracole</h3>
-          <img class="img-fluid mb-3" src="img/video-700-394.png" alt="vidéo"/>
+          <h3><i class="fa fa-commenting"></i> Sandrine nous parle de Caracole</h3>
+          <img class="img-fluid mb-3" src="{% static 'img/730x410.png' %}" alt="vidéo"/>
         </div>
         <div class="col-md-4 agenda">
           <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>
           <ul class="list-unstyled">
             <li class="media">
-              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
-              <div class="media-body">
+              <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/mystere_evenement_petit.jpg' %}" alt="événement mystere"></a>
+              <div class="media-body mb-2">
                 <!-- Affichage 3 derniers événements -->
-                <p class="dateEvent">Jeudi 25 octobre 2018 - 14H</p>
-                <a href=""><h6 class="mt-0 mb-1">Soutien aux faucheurs</h6></a>
+                <p class="dateDesc">sam 13 oct 2018 - &agrave; partir de 18H</p>
+                <a href=""><h6 class="mt-0 mb-1">Myst&egrave;re aux 50</h6></a>
                 <!-- Extrait 95 caractères -->
-                <p>Ideoque fertur neminem aliquando ob haec vel similia poenae addictum oblato de more elogio revo<a href="#"></a></p>
-              </div>
-            </li>
-            <li class="media my-4">
-              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
-              <div class="media-body">
-                <p class="dateEvent">samedi 13 novembre 2018 - 20H</p>
-                <a href=""><h6 class="mt-0 mb-1">Projection Floréal</h6></a>
-                <!-- Extrait 95 caractères -->
-                <p>factitarunt. et exitiale hoc vitium, quod in aliis non numquam intepescit, in illo aetatis prog<a href="#"></a></p>
+                <p class="descriptionEvent">On ne vous en dit pas plus... R&eacute;servez votre soir&eacute;e, vous ne le regretterez pas...</p>
               </div>
             </li>
             <li class="media">
-              <a href=""><img class="mr-3 img-thumbnail" src="img/94x94.png" alt="soutien aux faucheurs"></a>
-              <div class="media-body">
-                <p class="dateEvent">samedi 16 décembre 2018 - 19H</p>
-                <a href=""><h6 class="mt-0 mb-1">Arrivée Père Noel</h6></a>
+              <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/carabricole_evenement_petit.jpg' %}" alt="Carabricole"></a>
+              <div class="media-body mb-2">
+                <p class="dateDesc">sam 13 oct 2018 - 14h30 // 18h30</p>
+                <a href="agenda.html"><h6 class="mt-0 mb-1">Car@bricole</h6></a>
                 <!-- Extrait 95 caractères -->
-                <p>Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe cum propter vuc<a href="#"></a></p>
+                <p class="descriptionEvent">Un aspirateur qui souffle, une horloge qui dort ? Venez les r&eacute;parer avec nous !</p>
+              </div>
+            </li>
+            <li class="media">
+              <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/neutre_94x94.png' %}" alt="soutien aux faucheurs"></a>
+              <div class="media-body mb-2">
+                <p class="dateDesc">sam 13 nov 2018 - 20H</p>
+                <a href=""><h6 class="mt-0 mb-1">Collégiale</h6></a>
+                <!-- Extrait 95 caractères -->
+                <p class="descriptionEvent">Les r&eacute;unions du Coll&egrave;ge de sont ouverts &agrave; tous les adh&eacute;rents. Merci de pr&eacute;venir de votre venue.</p>
               </div>
             </li>
           </ul>
+          <a class="btn btn-outline-success" href="agenda.html"><i class="fa fa-sign-out"></i>  Tous les &eacute;v&eacute;nements</a>
         </div>
       </div>
     </div>
   </section>
   <!-- / Vidéo & actualités -->
-  <div class="container"><div class="sep">&nbsp;</div></div>
   <!-- Affichage 3 derniers articles "A la une" -->
-  <section class="nouvelles">
+  <section class="nouvelles mt-4">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-3"><h2>Les articles récents</h2></div>
+        <div class="col-md-12"><div class="titreRubrique">Les articles r&eacute;cents</div></div>
         <div class="col-md-4">
-          <a href="#"><h3>Cumque pertinacius ut legum</h3></a>
-          <img class="mb-3" src="img/350x150.png" alt="Les Cabas de Caracole"/>
+          <h3><a href="#">Cumque pertinacius ut legum</a></h3>
+          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="Les Cabas de Caracole"/>
           <!-- Affichage extrait 50 mots -->
           <p>Spatio cum consuetudo Scaevola ceteris maiorum se spatio Turpis se minime si et neque in ut res in Turpis turpes est quis sumus consuetudo et causa contra publicam de loco in iam rei neque amicitia ceteris iam ceteris eo casus turpes Deflexit eo futuros causa minime quis causa longe cum<a href=""></a></p>
         </div>
         <div class="col-md-4">
-          <a href="#"><h3>Et eodem impetu Domitianum</h3></a>
-          <img class="mb-3" src="img/350x150.png" alt="la chorale de Caracole"/>
+          <h3><a href="#">Et eodem impetu Domitianum</a></h3>
+          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="la chorale de Caracole"/>
           <!-- Affichage extrait 50 mots -->
           <p>Cela ressemblait aux gros ordinateurs que David avait pu voir dans des films de science fiction. Beaucoup de petites lumières indiquaient qu’il était en fonction. À la base, une sorte d’aquarium avait été installé tout autour. Certainement le système de refroidissement car des bulles montai<a href=""></a></p>
         </div>
         <div class="col-md-4">
-          <a href="#"><h3>Vide, quantum, inquam, fallare</h3></a>
-          <img class="mb-3" src="img/350x150.png" alt="c@rabricole"/>
+          <h3><a href="#">Vide, quantum, inquam, fallare</a></h3>
+          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="c@rabricole"/>
           <!-- Affichage extrait 50 mots -->
           <p>In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit<a href=""></a></p>
         </div>
@@ -200,29 +223,46 @@
   </section>
   <!-- / Affichage 3 derniers articles "A la une" -->
 </main>
-<div class="container"><div class="sep">&nbsp;</div></div>
 <!-- footer -->
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <div class="media">
-          <img class="mr-3" src="{% static 'img/logo.gif' %}" alt="logo caracole">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Caracole</h5>
-            <p>73 chemin Mange Pommes<br>31520 Ramonville Saint-Agne</p>
-          </div>
-        </div>
+      <div class="col-md-3">
+        <h5>Nous trouver</h5>
+        <img class="mr-3" src="{% static 'img/logo_def.png' %}" alt="logo caracole">
+        <h6 class="mt-0 mb-1">Caracole</h6>
+        <p>73 chemin Mange Pommes<br>31520 Ramonville Saint-Agne</p>
+        <p><i class="fa fa-map-marker"></i> Voir sur la carte</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
+        <h5>Garder le contact</h5>
         <ul class="list-unstyled">
-          <li><i class="fa fa-phone-square"></i>  04 66 45 12 33</li>
+          <li><i class="fa fa-phone-square"></i>  07 83 91 66 33</li>
           <li><a href="http://twitter.com/caracole_io" target="_blank"><i class="fa fa-twitter-square"></i>  twitter.com/caracole_io</a></li>
           <li><a href="http://www.facebook.com/caracole.io" target="_blank"><i class="fa fa-facebook-square"></i>  www.facebook.com/caracole.io</a></li>
         </ul>
+        <form>
+          <div class="form-group">
+            <small class="form-text">Je m'abonne au Cara'mel (lettre d'infos).</small>
+            <input id="adresseCourriel" type="email" class="form-control" aria-describedby="adresseCourriel" placeholder="Mon adresse courriel">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Envoyer</button>
+        </form>
       </div>
-      <div class="col-md-4">
-        <p>© Association Caracole - Tous droits réservés</p>
+      <div class="col-md-3">
+        <h5>Infos s&eacute;rieuses</h5>
+        <p>Directeur de publication : Collège de caracole</p>
+        <p>© 2018 - Association Caracole<br>Tous droits réservés... bon en m&ecirc;me temps, la prorpi&eacute;t&eacute; intellectuelle...</p>
+      </div>
+      <div class="col-md-3">
+        <h5>Se connecter</h5>
+        <form>
+          <div class="form-group">
+            <input id="emailHelp" type="email" class="form-control mb-2" aria-describedby="emailHelp" placeholder="Mon adresse courriel">
+            <input id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Se connecter</button>
+        </form>
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Acceuil',
+            name='Accueil',
             fields=[
                 ('page_ptr',
                  models.OneToOneField(

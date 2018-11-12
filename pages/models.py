@@ -4,7 +4,7 @@ from wagtail.core.models import Page
 from wagtail.search import index
 
 
-class Acceuil(Page):
+class Accueil(Page):
     body = RichTextField('texte', blank=True)
 
     search_fields = Page.search_fields + [index.SearchField('body')]

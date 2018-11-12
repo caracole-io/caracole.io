@@ -1,32 +1,9 @@
 {% extends 'base.html' %}
 {% load static wagtailcore_tags %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block main_content %}
-<!-- Breadcrumb et recherche -->
-<section>
-  <div class="container">
-    <div class="row justify-content-between">
-      <!-- TODO -->
-      <!-- https://github.com/prymitive/bootstrap-breadcrumbs ? -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Accueil</li>
-        </ol>
-      </nav>
-      <div class="col-4">
-        <form class="form-inline justify-content-end">
-          <!-- TODO -->
-          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-    </div>
-    <div class="sepBreadcrumb">&nbsp;</div>
-  </div>
-</section>
-<!-- / Breadcrumb et recherche -->
 <!-- Synthèse Caracole -->
 <main>
   <section class="mt-5">

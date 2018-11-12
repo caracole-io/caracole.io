@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1{
-font-size:40px;	
+font-size:40px;
 color: #a5c711;
 }
 
@@ -50,7 +50,7 @@ h1::before{
 }
 
 h2{
-color: #a5c711;	
+color: #a5c711;
 }
 
 h2::before{
@@ -383,7 +383,7 @@ table {
 }
 
 .extrait a::before{
-	font-family:'FontAwesome'; 
+	font-family:'FontAwesome';
 	content: "... \f055";
 	font-style: normal;
 }
@@ -481,7 +481,7 @@ table {
 /*----------------- | Classes diverses |----------------------------*/
 
 .citation{
-	font-size: 18px; 
+	font-size: 18px;
 	color: #b1b1b1;
 }
 
@@ -553,13 +553,13 @@ table {
 }
 
 .nouvelles p>a::before{
-	font-family:'FontAwesome'; 
+	font-family:'FontAwesome';
 	content: "... \f055";
 	font-style: normal;
 }
 
 .nouvelles h3::before{
-	font-family:'FontAwesome'; 
+	font-family:'FontAwesome';
 	content: "\f044  ";
 	font-style: normal;
 }
@@ -584,7 +584,7 @@ table {
   }
   .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
   }
- 
+
   body {
     font-size: 14px;
   }
@@ -594,3 +594,24 @@ table {
 }
 
 /****/
+
+/* https://docs.wagtail.io/en/v2.3/topics/writing_templates.html#responsive-embeds */
+
+.rich-text img {
+    max-width: 100%;
+    height: auto;
+}
+
+.responsive-object {
+    position: relative;
+}
+
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

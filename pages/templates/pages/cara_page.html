@@ -11,7 +11,8 @@
     <div class="row justify-content-between">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/pages/accueil">Accueil</a></li>
+          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+          <li class="breadcrumb-item">{{ page.get_parent }}</li>
           <li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
         </ol>
       </nav>

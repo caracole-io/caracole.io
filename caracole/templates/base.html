@@ -32,7 +32,7 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ section.title }}</a>
                 <div id="menu{{ section.slug  }}" class="dropdown-menu" aria-labelledby="menu{{ section.slug  }}">
                   {% for page in section.get_children.live.in_menu %}
-                  <a class="dropdown-item" href="{% pageurl page %}">{{ page.title }}</a>
+                  <a class="dropdown-item" href="{% pageurl page %}">{{ page.carapage.nom }}</a>
                   {% endfor %}
                 </div>
               </li>

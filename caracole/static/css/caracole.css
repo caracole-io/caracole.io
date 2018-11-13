@@ -149,6 +149,13 @@ ol, ul {
   padding-left: 0;
 }
 
+#header li::before,
+.agenda li::before,
+footer li::before,
+.breadcrumb li::before {
+    content: '';
+}
+
 li::before {
     content: "\f0a9 ";
     font-family: "Font Awesome 5 Free";

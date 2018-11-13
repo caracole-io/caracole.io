@@ -59,14 +59,6 @@
               <li class="nav-item"><a class="nav-link" href="{% url 'contacts' %}">Contacts</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Le Blog</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'liens' %}">Liens</a></li>
-
-              {% if request.user.is_authenticated %}<!-- TODO proper right management -->
-              <li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
-              {% if request.user.is_superuser %}
-              <li class="nav-item"><a class="nav-link" href="/admin">admin</a></li>
-              {% endif %}
-              {% endif %}
-
             </ul>
           </div>
         </nav>
@@ -113,6 +105,12 @@
       <div class="col-md-3">
         {% if request.user.is_authenticated %}
         <h5>Bienvenue {{ request.user }}</h5>
+        <ul class="list-unstyled">
+          <li><a class="nav-link" href="/cms">CMS</a></li>
+          {% if request.user.is_superuser %}
+          <li><a class="nav-link" href="/admin">admin</a></li>
+          {% endif %}
+        </li>
         <a class="btn btn-outline-light" href="{% url 'logout' %}">Se déconnecter</a>
         {% else %}
         <h5>Se connecter</h5>

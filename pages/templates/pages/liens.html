@@ -1,0 +1,11 @@
+{% extends 'pages/cara_page.html' %}
+{% load wagtailimages_tags %}
+
+{% block subcontent %}
+{% for ami in page.amis.all %}
+<div class="clearfix mb-3">
+    <div class="col-md-2 float-left">{% image ami.logo width-108 class="img-fluid" %}</div>
+    <div class="col-md-10 float-left"><a href="{{ ami.href }}" target="_blank">{{ ami.title }}</a></div>
+</div>
+{% endfor %}
+{% endblock %}

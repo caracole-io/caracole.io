@@ -33,19 +33,23 @@
       <!-- Affichage Main -->
       <main class="col-md-8 blog-main">
         <h1>{{ page.title }}</h1>
+        {% if page.img %}
         <div>
           {% image page.img width-730 class="img-fluid" %}
           <div class="figure-caption mb-4">{{ page.img_caption }}</div>
         </div>
+        {% endif %}
         {% if page.exergue %}
         <div class="exergue rounded">
           {{ page.exergue }}
           {% if page.citation %}<br><span class="citation">{{ page.citation }}</span>{% endif %}
         </div>
         {% endif %}
+        {% block subcontent %}
         <div class="multicol">
           {{ page.content|richtext }}
         </div>
+        {% endblock %}
       </main>
       <!-- / Affichage Main -->
       <!-- Affichage SideBar -->

@@ -30,7 +30,7 @@ class Carousel(Orderable):
 
 class CaraPage(Page):
     nom = models.CharField(max_length=250)
-    img = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    img = models.ForeignKey('wagtailimages.Image', null=True, blank=True, on_delete=models.SET_NULL, related_name='+')
     img_caption = models.CharField('légende de l’image', max_length=250, blank=True, null=True)
     exergue = models.TextField(blank=True, null=True)
     citation = models.CharField('auteur de l’exergue', max_length=250, blank=True, null=True)
@@ -58,3 +58,16 @@ class Contact(Page):
     content = RichTextField('contenu', blank=True)
 
     content_panels = Page.content_panels + [FieldPanel('content', classname='full')]
+
+
+class Liens(CaraPage):
+    content_panels = CaraPage.content_panels + [InlinePanel('amis', label='Amis')]
+
+
+class Amis(Orderable):
+    page = ParentalKey(CaraPage, on_delete=models.CASCADE, related_name='amis')
+    logo = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    title = models.CharField('titre', max_length=250)
+    href = models.URLField('lien', blank=True, null=True)
+
+    panels = [FieldPanel('title'), FieldPanel('href'), ImageChooserPanel('logo')]

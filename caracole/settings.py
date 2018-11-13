@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'ndh.context_processors.settings_constants',
+                f'{PROJECT}.context_processors.wagtree',
             ],
         },
     },

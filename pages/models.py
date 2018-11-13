@@ -48,3 +48,7 @@ class Rubrique(Orderable):
     page = ParentalKey(CaraPage, on_delete=models.CASCADE, related_name='rubriques')
     title = models.CharField('titre', max_length=250)
     content = RichTextField('contenu', blank=True)
+
+
+class Section(Page):
+    pass

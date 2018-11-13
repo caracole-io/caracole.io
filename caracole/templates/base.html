@@ -1,6 +1,5 @@
 {% extends 'ndh.html' %}
-{% load static %}
-{% load wagtailuserbar %}
+{% load static wagtailcore_tags wagtailuserbar %}
 
 {% block style %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
@@ -28,25 +27,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
+              {% for section in sections %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Caracole</a>
-                <div id="menuCaracole" class="dropdown-menu" aria-labelledby="menuCaracole">
-                  <a class="dropdown-item" href="/pages/association">L'association</a>
-                  <a class="dropdown-item" href="/pages/statuts">Les statuts</a>
-                  <a class="dropdown-item" href="/pages/gouvernance">La gouvernance</a>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ section.title }}</a>
+                <div id="menu{{ section.slug  }}" class="dropdown-menu" aria-labelledby="menu{{ section.slug  }}">
+                  {% for page in section.get_children.live.in_menu %}
+                  <a class="dropdown-item" href="{% pageurl page %}">{{ page.title }}</a>
+                  {% endfor %}
                 </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commissions</a>
-                <div id="menuCommissions" class="dropdown-menu" aria-labelledby="menuCommissions">
-                  <a class="dropdown-item" href="/pages/cabas">Cabas</a>
-                  <a class="dropdown-item" href="/pages/carabricole">C@rabricole</a>
-                  <a class="dropdown-item" href="/pages/chorale">Chorale</a>
-                  <a class="dropdown-item" href="/pages/evenements">&Eacute;vénements</a>
-                  <a class="dropdown-item" href="/pages/jardin_partage">Jardin Partagé</a>
-                </div>
-              </li>
-
+              {% endfor %}
               <!--
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">

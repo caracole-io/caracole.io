@@ -111,14 +111,20 @@
         <p>© 2018 - Association Caracole<br>Tous droits réservés... bon en m&ecirc;me temps, la prorpi&eacute;t&eacute; intellectuelle...</p>
       </div>
       <div class="col-md-3">
+        {% if request.user.is_authenticated %}
+        <h5>Bienvenue {{ request.user }}</h5>
+        <a class="btn btn-outline-light" href="{% url 'logout' %}">Se déconnecter</a>
+        {% else %}
         <h5>Se connecter</h5>
-        <form>
+        <form action="{% url 'login' %}?next={{ request.path }}" method="post" role="form">
+          {% csrf_token %}
           <div class="form-group">
-            <input id="emailHelp" type="email" class="form-control mb-2" aria-describedby="emailHelp" placeholder="Mon adresse courriel">
-            <input id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
+            <input name="username" id="emailHelp" class="form-control mb-2" aria-describedby="emailHelp" placeholder="Mon adresse nom d'utilisateur ou courriel">
+            <input name="password" id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
           </div>
           <button type="submit" class="btn btn-outline-light">Se connecter</button>
         </form>
+        {% endif %}
       </div>
     </div>
   </div>

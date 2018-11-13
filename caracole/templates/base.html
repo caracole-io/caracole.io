@@ -88,6 +88,54 @@
 </header>
 {% endblock %}
 
+{% block main_content %}
+{% block content %}{% endblock %}
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Nous trouver</h5>
+        <img class="mr-3" src="{% static 'img/logo_def.png' %}" alt="logo caracole">
+        <h6 class="mt-0 mb-1">Caracole</h6>
+        <p>73 chemin Mange Pommes<br>31520 Ramonville Saint-Agne</p>
+        <p><i class="fa fa-map-marker"></i> Voir sur la carte</p>
+      </div>
+      <div class="col-md-3">
+        <h5>Garder le contact</h5>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-phone-square"></i>  07 83 91 66 33</li>
+          <li><a href="http://twitter.com/caracole_io" target="_blank"><i class="fa fa-twitter-square"></i>  twitter.com/caracole_io</a></li>
+          <li><a href="http://www.facebook.com/caracole.io" target="_blank"><i class="fa fa-facebook-square"></i>  www.facebook.com/caracole.io</a></li>
+        </ul>
+        <form>
+          <div class="form-group">
+            <small class="form-text">Je m'abonne au Cara'mel (lettre d'infos).</small> <input id="adresseCourriel" type="email" class="form-control" aria-describedby="adresseCourriel" placeholder="Mon adresse courriel">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Envoyer</button>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <h5>Infos s&eacute;rieuses</h5>
+        <p>Directeur de publication : Collège de caracole</p>
+        <p>© 2018 - Association Caracole<br>Tous droits réservés... bon en m&ecirc;me temps, la prorpi&eacute;t&eacute; intellectuelle...</p>
+      </div>
+      <div class="col-md-3">
+        <h5>Se connecter</h5>
+        <form>
+          <div class="form-group">
+            <input id="emailHelp" type="email" class="form-control mb-2" aria-describedby="emailHelp" placeholder="Mon adresse courriel">
+            <input id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- / footer -->
+{% endblock %}
+
 {% block scripts %}
 <script src="{% static 'js/jquery.easing.min.js' %}"></script>
 <script src="{% static 'js/wow.js' %}"></script>

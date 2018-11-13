@@ -395,7 +395,7 @@ a[href$=".zip"] {
 
 .extrait a::before{
 	font-family:'Font Awesome 5 Free';
-	content: "... \f055";
+	content: " \f055";
 	font-style: normal;
 }
 

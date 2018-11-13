@@ -1,6 +1,8 @@
 from django.db import models
 
+from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
@@ -71,3 +73,30 @@ class Amis(Orderable):
     href = models.URLField('lien', blank=True, null=True)
 
     panels = [FieldPanel('title'), FieldPanel('href'), ImageChooserPanel('logo')]
+
+
+class Blog(Page):
+    nom = models.CharField(max_length=250)
+
+    content_panels = Page.content_panels + [FieldPanel('nom')]
+
+
+class BlogTag(TaggedItemBase):
+    content_object = ParentalKey('caracole.Article', on_delete=models.CASCADE, related_name='tagged_items')
+
+
+class Article(Page):
+    author = models.CharField('auteur', max_length=250)
+    img = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    img_caption = models.CharField('légende de l’image', max_length=250, blank=True, null=True)
+    content = RichTextField('contenu', blank=True)
+
+    tags = ClusterTaggableManager(through=BlogTag, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('author'),
+        ImageChooserPanel('img'),
+        FieldPanel('img_caption'),
+        FieldPanel('content'),
+        FieldPanel('tags'),
+    ]

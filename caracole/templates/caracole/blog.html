@@ -1,0 +1,29 @@
+{% extends 'caracole/cara_page.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
+{% endblock %}
+{% block page_head %}{% endblock %}
+
+{% block subcontent %}
+{% for page in page.get_children %}
+{% include 'caracole/_article.html' with short=True article=page.article %}
+{% endfor %}
+{% endblock %}
+
+{% block rubriques %}
+<!--
+<div class="rubrique">
+  <div class="titreRubrique">Calendrier</div>
+  TODO
+</div>
+<div class="rubrique">
+  <div class="titreRubrique">Archives</div>
+  TODO
+</div>
+<div class="rubrique">
+  <div class="titreRubrique">Rubriques</div>
+  TODO
+</div>
+-->
+{% endblock %}

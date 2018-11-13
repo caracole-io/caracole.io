@@ -12,8 +12,10 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+          {% block breadcrumb %}
           <li class="breadcrumb-item">{{ page.get_parent }}</li>
           <li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
+          {% endblock %}
         </ol>
       </nav>
       <div class="col-4">
@@ -32,6 +34,7 @@
     <div class="row">
       <!-- Affichage Main -->
       <main class="col-md-8 blog-main">
+        {% block page_head %}
         <h1>{{ page.title }}</h1>
         {% if page.img %}
         <div>
@@ -45,6 +48,7 @@
           {% if page.citation %}<br><span class="citation">{{ page.citation }}</span>{% endif %}
         </div>
         {% endif %}
+        {% endblock %}
         {% block subcontent %}
         <div class="multicol">
           {{ page.content|richtext }}
@@ -55,12 +59,14 @@
       <!-- Affichage SideBar -->
       <div class="col-md-4 blog-sidebar">
         <div class="contenu">
+          {% block rubriques %}
           {% for rubrique in page.rubriques.all %}
           <div class="rubrique">
             <div class="titreRubrique">{{ rubrique.title }}</div>
             {{ rubrique.content|richtext }}
           </div>
           {% endfor %}
+          {% endblock %}
         </div>
       </div>
       <!-- / Affichage SideBar -->

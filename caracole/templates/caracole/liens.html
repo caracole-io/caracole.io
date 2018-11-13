@@ -1,6 +1,10 @@
 {% extends 'caracole/cara_page.html' %}
 {% load wagtailimages_tags %}
 
+{% block breadcrumb %}
+<li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
+{% endblock %}
+
 {% block subcontent %}
 {% for ami in page.amis.all %}
 <div class="clearfix mb-3">

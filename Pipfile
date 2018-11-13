@@ -18,6 +18,8 @@ safety = "*"
 "psycopg2-binary" = "*"
 raven = "*"
 yapf = "*"
+pygments-zenburn = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.7"

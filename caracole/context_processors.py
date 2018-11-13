@@ -1,4 +1,4 @@
-from pages.models import Section
+from .models import Section
 
 
 def wagtree(request):

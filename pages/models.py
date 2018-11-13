@@ -52,3 +52,9 @@ class Rubrique(Orderable):
 
 class Section(Page):
     pass
+
+
+class Contact(Page):
+    content = RichTextField('contenu', blank=True)
+
+    content_panels = Page.content_panels + [FieldPanel('content', classname='full')]

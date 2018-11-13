@@ -15,7 +15,6 @@ urlpatterns = [
     path('cms/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
     path('agenda', TemplateView.as_view(template_name='agenda.html'), name='agenda'),  # TODO
-    path('contacts', TemplateView.as_view(template_name='contacts.html'), name='contacts'),  # TODO
     path('blog', TemplateView.as_view(template_name='blog.html'), name='blog'),  # TODO
     path('liens', TemplateView.as_view(template_name='liens.html'), name='liens'),  # TODO
     path('videgrenier/', include('videgrenier.urls')),

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ page.nom }}{% endblock %}
+
+
+{% block main_content %}
+<!-- Breadcrumb et recherche -->
+<section>
+  <div class="container sepBreadcrumb">
+    <div class="row justify-content-between">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/pages/accueil">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
+        </ol>
+      </nav>
+      <div class="col-4">
+        <form class="form-inline justify-content-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- / Breadcrumb et recherche -->
+<!-- Affichage principal -->
+<section>
+  <div class="container">
+    <div class="row">
+      <!-- Affichage Main -->
+      <main class="col-md-8 blog-main">
+        <h1>{{ page.title }}</h1>
+        <div>
+          {% image page.img width-730 class="img-fluid" %}
+          <div class="figure-caption mb-4">{{ page.img_caption }}</div>
+        </div>
+        {% if page.exergue %}
+        <div class="exergue rounded">
+          {{ page.exergue }}
+          {% if page.citation %}<span class="citation">{{ page.citation }}</span>{% endif %}
+        </div>
+        {% endif %}
+        <div class="multicol">
+          {{ page.content|richtext }}
+        </div>
+      </main>
+      <!-- / Affichage Main -->
+      <!-- Affichage SideBar -->
+      <div class="col-md-4 blog-sidebar">
+        <div class="contenu">
+          {% for rubrique in page.rubriques.all %}
+          <div class="rubrique">
+            <div class="titreRubrique">{{ rubrique.title }}</div>
+            {{ rubrique.content|richtext }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- / Affichage SideBar -->
+    </div>
+  </div>
+</section>
+<!-- / Affichage Principal -->
+{% endblock %}

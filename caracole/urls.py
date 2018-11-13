@@ -21,7 +21,7 @@ urlpatterns = [
     path('liens', TemplateView.as_view(template_name='liens.html'), name='liens'),  # TODO
     path('videgrenier/', include('videgrenier.urls')),
     path('vide-grenier/', RedirectView.as_view(url='/videgrenier/', permanent=True)),
-    path('', RedirectView.as_view(url='/pages/acceuil')),
+    path('', RedirectView.as_view(url='/pages/accueil')),
 ]
 
 if settings.DEBUG:

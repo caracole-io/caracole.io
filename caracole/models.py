@@ -9,11 +9,11 @@ from wagtail.search import index
 
 
 class Accueil(Page):
-    body = RichTextField('texte', blank=True)
+    content = RichTextField('texte', blank=True)
 
-    search_fields = Page.search_fields + [index.SearchField('body')]
+    search_fields = Page.search_fields + [index.SearchField('content')]
     content_panels = Page.content_panels + [
-        FieldPanel('body', classname='full'),
+        FieldPanel('content', classname='full'),
         InlinePanel('carousels', label='Carousel')
     ]
 

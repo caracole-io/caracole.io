@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-4">
           <h2>{{ page.title }}</h2>
-          {{ page.body|richtext }}
+          {{ page.content|richtext }}
           <a class="btn btn-outline-success" href="{% slugurl 'association' %}"><i class="fa fa-sign-out-alt"></i> En savoir plus...</a>
           <img src="{% static 'img/escargot.png' %}" class="mb-2" alt="escargot"/>
         </div>

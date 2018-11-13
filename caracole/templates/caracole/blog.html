@@ -6,8 +6,8 @@
 {% block page_head %}{% endblock %}
 
 {% block subcontent %}
-{% for page in page.get_children %}
-{% include 'caracole/_article.html' with short=True article=page.article %}
+{% for article in articles %}
+{% include 'caracole/_article.html' with short=True article=article %}
 {% endfor %}
 {% endblock %}
 
@@ -21,9 +21,11 @@
   <div class="titreRubrique">Archives</div>
   TODO
 </div>
+-->
 <div class="rubrique">
   <div class="titreRubrique">Rubriques</div>
-  TODO
+  {% for tag in tags %}
+  <a href="{% url 'tag' tag.slug %}">{{ tag }}</a>
+  {% endfor %}
 </div>
--->
 {% endblock %}

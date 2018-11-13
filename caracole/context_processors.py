@@ -1,5 +1,12 @@
-from .models import Section
+from taggit.models import Tag
+
+from . import models
 
 
 def wagtree(request):
-    return {'sections': Section.objects.all()}
+    # TODO: cache
+    return {
+        'sections': models.Section.objects.all(),
+        'tags': Tag.objects.all(),
+        'articles': models.Article.objects.live(),
+    }

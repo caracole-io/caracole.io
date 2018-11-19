@@ -111,3 +111,30 @@ class Caramel(TimeStampedModel):
 
     def get_absolute_url(self):
         return '/'
+
+
+class Evenements(CaraPage):
+    zoom_image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    zoom_titre = models.CharField(max_length=200)
+    zoom_description = RichTextField()
+
+    content_panels = CaraPage.content_panels + [
+        ImageChooserPanel('zoom_image'),
+        FieldPanel('zoom_titre'),
+        FieldPanel('zoom_description'),
+        InlinePanel('evenement', label='Évènements')
+    ]
+
+
+class Evenement(Orderable):
+    page = ParentalKey(CaraPage, on_delete=models.CASCADE, related_name='evenement')
+    titre = models.CharField(max_length=200)
+    image = models.ForeignKey('wagtailimages.Image', null=True, on_delete=models.SET_NULL, related_name='+')
+    description = models.CharField(max_length=95)
+    date = models.DateField()
+    horaires = models.CharField(max_length=200)
+    lieu = models.CharField(max_length=200)
+    caracole = models.BooleanField('évènement de caracole', default=True)
+
+    panels = [ImageChooserPanel('image')
+              ] + [FieldPanel(field) for field in ['titre', 'description', 'lieu', 'date', 'horaires', 'caracole']]

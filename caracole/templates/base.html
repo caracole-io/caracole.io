@@ -72,8 +72,35 @@
 {% endblock %}
 
 {% block main_content %}
+<!-- Breadcrumb et recherche -->
+<section>
+  <div class="container sepBreadcrumb">
+    <div class="row justify-content-between">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+          {% block breadcrumb %}
+          {% if page.get_parent.title != "Root" and page.get_parent.title != "Caracole ! Qu'es aquo ?" %}
+          <li class="breadcrumb-item">{{ page.get_parent }}</li>
+          {% endif %}
+          <li class="breadcrumb-item active" aria-current="page">{% if page.nom %}{{ page.nom }}{% else %}{{ page.title }}{% endif %}</li>
+          {% endblock %}
+        </ol>
+      </nav>
+      <div class="col-4">
+        <form class="form-inline justify-content-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- / Breadcrumb et recherche -->
 <div class="container">{% bootstrap_messages %}</div>
+<main>
 {% block content %}{% endblock %}
+</main>
 <!-- footer -->
 <footer>
   <div class="container">

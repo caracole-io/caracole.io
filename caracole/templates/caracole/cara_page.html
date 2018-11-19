@@ -5,35 +5,12 @@
 
 
 {% block content %}
-<!-- Breadcrumb et recherche -->
-<section>
-  <div class="container sepBreadcrumb">
-    <div class="row justify-content-between">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-          {% block breadcrumb %}
-          <li class="breadcrumb-item">{{ page.get_parent }}</li>
-          <li class="breadcrumb-item active" aria-current="page">{{ page.nom }}</li>
-          {% endblock %}
-        </ol>
-      </nav>
-      <div class="col-4">
-        <form class="form-inline justify-content-end">
-          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- / Breadcrumb et recherche -->
 <!-- Affichage principal -->
 <section>
   <div class="container">
     <div class="row">
       <!-- Affichage Main -->
-      <main class="col-md-8 blog-main">
+      <div class="col-md-8 blog-main">
         {% block page_head %}
         <h1>{{ page.title }}</h1>
         {% if page.img %}
@@ -54,7 +31,7 @@
           {{ page.content|richtext }}
         </div>
         {% endblock %}
-      </main>
+      </div>
       <!-- / Affichage Main -->
       <!-- Affichage SideBar -->
       <div class="col-md-4 blog-sidebar">

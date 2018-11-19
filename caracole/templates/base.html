@@ -1,5 +1,5 @@
 {% extends 'ndh.html' %}
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags wagtailuserbar bootstrap4 %}
 
 {% block style %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
@@ -72,6 +72,7 @@
 {% endblock %}
 
 {% block main_content %}
+<div class="container">{% bootstrap_messages %}</div>
 {% block content %}{% endblock %}
 <!-- footer -->
 <footer>

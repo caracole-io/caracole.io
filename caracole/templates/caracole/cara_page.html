@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ page.nom }}{% endblock %}
+
+
+{% block content %}
+<!-- Affichage principal -->
+<section>
+  <div class="container">
+    <div class="row">
+      <!-- Affichage Main -->
+      <div class="col-md-8 blog-main">
+        {% block page_head %}
+        <h1>{{ page.title }}</h1>
+        {% if page.img %}
+        <div>
+          {% image page.img width-730 class="img-fluid" %}
+          <div class="figure-caption mb-4">{{ page.img_caption }}</div>
+        </div>
+        {% endif %}
+        {% if page.exergue %}
+        <div class="exergue rounded">
+          {{ page.exergue }}
+          {% if page.citation %}<br><span class="citation">{{ page.citation }}</span>{% endif %}
+        </div>
+        {% endif %}
+        {% endblock %}
+        {% block subcontent %}
+        <div class="multicol">
+          {{ page.content|richtext }}
+        </div>
+        {% endblock %}
+      </div>
+      <!-- / Affichage Main -->
+      <!-- Affichage SideBar -->
+      <div class="col-md-4 blog-sidebar">
+        <div class="contenu">
+          {% block rubriques %}
+          {% for rubrique in page.rubriques.all %}
+          <div class="rubrique">
+            <div class="titreRubrique">{{ rubrique.title }}</div>
+            {{ rubrique.content|richtext }}
+          </div>
+          {% endfor %}
+          {% endblock %}
+        </div>
+      </div>
+      <!-- / Affichage SideBar -->
+    </div>
+  </div>
+</section>
+<!-- / Affichage Principal -->
+{% endblock %}

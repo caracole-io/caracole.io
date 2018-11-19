@@ -1,42 +1,168 @@
 {% extends 'ndh.html' %}
-{% load static %}
+{% load static wagtailcore_tags wagtailuserbar bootstrap4 %}
+
+{% block style %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" integrity="sha384-QT2Z8ljl3UupqMtQNmPyhSPO/d5qbrzWmFxJqmY7tqoTuT2YrQLEqzvVOP2cT5XW" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/caracole.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/stylesheet.css' %}">
+<link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" />
+{% endblock %}
 
 {% block pagetitle %}Caracole - {% block title %}{{ title }}{% endblock %}{% endblock %}
 {% block sitetitle %}Caracole{% endblock %}
 
-{% block navbarleft %}
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-    Commissions
-  </a>
-  <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
-      <a class="dropdown-item" href="/pages/comcom">ComCom</a>
-      <a class="dropdown-item" href="/pages/bus">Bus</a>
-      <a class="dropdown-item" href="/pages/chorale">Chorale</a>
-  </div>
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-    Vide Grenier
-  </a>
-  <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
-      <a class="dropdown-item" href="{% url 'videgrenier:home' %}">Accueil</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:reservation' %}">Réservation</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:plan' %}">Plan d’accès</a>
-      <a class="dropdown-item" href="{% url 'videgrenier:reglement' %}">Règlement</a>
-      {% if request.user.is_staff %}
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="{% url 'videgrenier:reservation-list' %}">Administration</a>
-      {% endif %}
-  </div>
-</li>
+{% block header_navbar %}
+<!-- header -->
+<header id="header">
+  <!-- Barre de navigation -->
+  <nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <nav class="navbar navbar-expand-lg navbar-light z-index">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item {% if request.path == '/' %}active{% endif %}"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
+              {% for section in sections %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if section.slug in request.path %}active {% endif %}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ section.title }}</a>
+                <div id="menu{{ section.slug  }}" class="dropdown-menu" aria-labelledby="menu{{ section.slug  }}">
+                  {% for page in section.get_children.live.in_menu %}
+                  <a class="dropdown-item" href="{% pageurl page %}">{{ page.carapage.nom }}</a>
+                  {% endfor %}
+                </div>
+              </li>
+              {% endfor %}
+              <!--
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                  Vide Grenier
+                </a>
+                <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">
+                  <a class="dropdown-item" href="{% url 'videgrenier:home' %}">Accueil</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reservation' %}">Réservation</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:plan' %}">Plan d’accès</a>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reglement' %}">Règlement</a>
+                  {% if request.user.is_staff %}
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'videgrenier:reservation-list' %}">Administration</a>
+                  {% endif %}
+                </div>
+              </li>
+              -->
 
-{% if request.user.is_authenticated %}<!-- TODO proper right management -->
-<li class="nav-item"><a class="nav-link" href="/cms">CMS</a></li>
-{% endif %}
+              <li class="nav-item"><a class="nav-link" href="{% slugurl 'agenda' %}">Agenda</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% slugurl 'contacts' %}">Contacts</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% slugurl 'blog' %}">Le Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% slugurl 'liens' %}">Liens</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+  <!-- / Barre navigation -->
+  <!-- / Header -->
+</header>
 {% endblock %}
 
-{% block content %}
-<h1>Hello Caracole</h1>
-<p>Site en construction…</p>
-<p><a href="http://caracole.le-pic.org/caracole-v4/accueil/agenda.2.4.php">Aller sur l’ancier site</a></p>
+{% block main_content %}
+<!-- Breadcrumb et recherche -->
+<section>
+  <div class="container sepBreadcrumb">
+    <div class="row justify-content-between">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+          {% block breadcrumb %}
+          {% if page.get_parent.title != "Root" and page.get_parent.title != "Caracole ! Qu'es aquo ?" %}
+          <li class="breadcrumb-item">{{ page.get_parent }}</li>
+          {% endif %}
+          <li class="breadcrumb-item active" aria-current="page">{% if page.nom %}{{ page.nom }}{% else %}{{ page.title }}{% endif %}</li>
+          {% endblock %}
+        </ol>
+      </nav>
+      <div class="col-4">
+        <form class="form-inline justify-content-end">
+          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- / Breadcrumb et recherche -->
+<div class="container">{% bootstrap_messages %}</div>
+<main>
+{% block content %}{% endblock %}
+</main>
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h5>Nous trouver</h5>
+        <img class="mr-3" src="{% static 'img/logo_def.png' %}" alt="logo caracole">
+        <h6 class="mt-0 mb-1">Caracole</h6>
+        <p>73 chemin Mange Pommes<br>31520 Ramonville Saint-Agne</p>
+        <p><a href="{% slugurl 'contacts' %}"><i class="fa fa-map-marker"></i> Voir sur la carte</a></p>
+      </div>
+      <div class="col-md-3">
+        <h5>Garder le contact</h5>
+        <ul class="list-unstyled">
+          <li><i class="fa fa-phone-square"></i>  07 83 91 66 33</li>
+          <li><a href="http://twitter.com/caracole_io" target="_blank"><i class="fab fa-twitter-square"></i>  twitter.com/caracole_io</a></li>
+          <li><a href="http://www.facebook.com/caracole.io" target="_blank"><i class="fab fa-facebook-square"></i>  www.facebook.com/caracole.io</a></li>
+        </ul>
+        <form action="{% url 'caramel' %}" method="post" role="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <small class="form-text">Je m'abonne au Cara'mel (lettre d'infos).</small> <input id="adresseCourriel" type="email" class="form-control" aria-describedby="adresseCourriel" placeholder="Mon adresse courriel" name="mail">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Envoyer</button>
+        </form>
+      </div>
+      <div class="col-md-3">
+        <h5>Infos s&eacute;rieuses</h5>
+        <p>Directeur de publication : Collège de caracole</p>
+        <p>© 2018 - Association Caracole<br>Tous droits réservés... bon en m&ecirc;me temps, la prorpi&eacute;t&eacute; intellectuelle...</p>
+      </div>
+      <div class="col-md-3">
+        {% if request.user.is_authenticated %}
+        <h5>Bienvenue {{ request.user }}</h5>
+        <ul class="list-unstyled">
+          <li><a class="nav-link" href="/cms">CMS</a></li>
+          {% if request.user.is_superuser %}
+          <li><a class="nav-link" href="/admin">admin</a></li>
+          {% endif %}
+        </li>
+        <a class="btn btn-outline-light" href="{% url 'logout' %}">Se déconnecter</a>
+        {% else %}
+        <h5>Se connecter</h5>
+        <form action="{% url 'login' %}?next={{ request.path }}" method="post" role="form">
+          {% csrf_token %}
+          <div class="form-group">
+            <input name="username" id="emailHelp" class="form-control mb-2" aria-describedby="emailHelp" placeholder="Mon adresse nom d'utilisateur ou courriel">
+            <input name="password" id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
+          </div>
+          <button type="submit" class="btn btn-outline-light">Se connecter</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- / footer -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% wagtailuserbar %}
 {% endblock %}

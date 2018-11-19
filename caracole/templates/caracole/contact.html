@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ page.nom }}{% endblock %}
+
+
+{% block content %}
+<!-- Affichage principal -->
+<section>
+  <div class="container">
+    <div class="row">
+      <!-- Affichage Main -->
+      <div class="col-md-12"><h1>Nous trouver</h1></div>
+      <div class="col-md-12 mb-5"><iframe class="embed-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.9073689614515!2d1.4896984159776951!3d43.54597277912507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebe70aa6ba633%3A0x63a517c960110ec9!2s73+Chemin+de+Mange+Pommes%2C+31520+Ramonville-Saint-Agne!5e0!3m2!1sfr!2sfr!4v1533483248575" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+      <div class="col-md-12  mb-5">
+        <h3>Permanence de l'association</h3>
+        {{ page.content|richtext }}
+      </div>
+      <div class="col-md-12"><h3 class="courriel">Nous envoyer un message</h3></div>
+      <form class="col-md-12 contacts">
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Votre nom">
+          </div>
+          <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Votre adresse courriel">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <textarea class="form-control" rows="5" placeholder="Votre message"></textarea>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="inputState">Ce message s'adresse &agrave; :</label>
+            <select id="inputState" class="form-control">
+              <option selected>L'association : bénévolat dans l'asso, questions sur son fonctionnement...</option>
+              <option>Le Cabas : proposer un producteur, besoin d'info sur un produit...</option>
+              <option>Carabricole : proposer une intervention, questions quoi-où-comment...</option>
+              <option>La chorale : proposer votre voix, questions sur le fonctionnement...</option>
+              <option>Le collège : savoir où se tient le prochain collège, proposer un événement...</option>
+              <option>La Com'com : besoin d'un logo, questions sur la communication...</option>
+              <option>Le jardin partagé : envie de jardiner avec nous, des iris ou une brouette à donner...</option>
+            </select></div>
+        </div>
+        <button type="submit" class="btn btn-success">Envoyer</button>
+      </form>
+      <!-- / Affichage Main -->
+    </div>
+  </div>
+</section>
+<!-- / Affichage Principal -->
+{% endblock %}

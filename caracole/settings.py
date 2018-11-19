@@ -15,7 +15,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-
 INSTALLED_APPS = [
     PROJECT,
     'ndh',
@@ -28,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.sites',
-
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -40,12 +38,8 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-
     'modelcluster',
     'taggit',
-
-    'pages',
-
     'bootstrap4',
     'videgrenier',
 ]
@@ -58,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
@@ -77,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'ndh.context_processors.settings_constants',
+                f'{PROJECT}.context_processors.wagtree',
             ],
         },
     },
@@ -87,7 +81,7 @@ WSGI_APPLICATION = f'{PROJECT}.wsgi.application'
 DB = os.environ.get('DB', 'db.sqlite3')
 DATABASES = {
     'default': {
-        'ENGINE': f'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, DB),
     }
 }
@@ -123,10 +117,10 @@ USE_TZ = True
 
 SITE_ID = int(os.environ.get('SITE_ID', 1))
 
-MEDIA_ROOT = '/srv/media/'
+MEDIA_ROOT = f'/srv/{PROJECT}/media/'
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = '/srv/static/'
+STATIC_ROOT = f'/srv/{PROJECT}/static/'
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_USE_SSL = True

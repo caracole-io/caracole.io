@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<!-- Synthèse Caracole -->
+<section class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            {% for carousel in page.carousels.all %}
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+            {% endfor %}
+          </ol>
+          <div class="carousel-inner">
+            {% for carousel in page.carousels.all %}
+            <div class="carousel-item{% if forloop.first %} active{% endif %}">
+              {% if carousel.href %}<a href="{{ carousel.href }}">{% endif %}
+                {% image carousel.img width-730 class="d-block w-100"%}
+                {% if carousel.href %}</a>{% endif %}
+              <div class="carousel-caption d-none d-md-block">
+                <h3>{{ carousel.title }}</h3>
+                <p>{{ carousel.text }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h2>{{ page.title }}</h2>
+        {{ page.content|richtext }}
+        <a class="btn btn-outline-success" href="{% slugurl 'association' %}"><i class="fa fa-sign-out-alt"></i> En savoir plus...</a>
+        <img src="{% static 'img/escargot.png' %}" class="mb-2" alt="escargot"/>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- / Synthèse Caracole -->
+<!-- Vidéo & actualités -->
+<section class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><div class="titreRubrique">L'actu du moment</div></div>
+      <div class="col-md-8">
+        <h3><i class="fa fa-commenting"></i> Sandrine nous parle de Caracole</h3>
+        <img class="img-fluid mb-3" src="{% static 'img/730x410.png' %}" alt="vidéo"/>
+      </div>
+      <div class="col-md-4 agenda">
+        <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>
+        <ul class="list-unstyled">
+          {% for evenement in evenements|slice:":3" %}
+          <li class="media">
+            {% image evenement.image fill-94x94 class="mr-3 img-thumbnail" %}
+            <div class="media-body mb-2">
+              <p class="dateDesc">{{ evenement.date|date:"D d b Y" }} - {{ evenement.horaires }}</p>
+              <h6 class="mt-0 mb-1">{{ evenement.titre }}</h6>
+              <!-- Extrait 95 caractères -->
+              <p class="descriptionEvent">{{ evenement.description|truncatechars:95 }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn-outline-success" href="{% slugurl 'agenda' %}"><i class="fa fa-sign-out-alt"></i>  Tous les événements</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- / Vidéo & actualités -->
+<!-- Affichage 3 derniers articles "A la une" -->
+<section class="nouvelles mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><div class="titreRubrique">Les articles r&eacute;cents</div></div>
+      {% for article in articles|slice:":3" %}
+      <div class="col-md-4">
+        <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
+        {% image article.img width-350 class="mb-3" %}
+        <div class="extrait">
+          {{ article.content|richtext|truncatechars_html:200 }}<a href="{% pageurl article %}"></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- / Affichage 3 derniers articles "A la une" -->
+{% endblock %}

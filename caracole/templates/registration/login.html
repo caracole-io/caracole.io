@@ -3,17 +3,19 @@
 
 
 {% block content %}
-<h1>{% trans "Log in" %}</h1>
+<div class="container">
+  <h1>{% trans "Log in" %}</h1>
 
-<form method="post" action="" class="form-horizontal" role="form">
-  {% csrf_token %}
-  {% bootstrap_form form layout="horizontal" %}
-  {% buttons layout="horizontal" %}
+  <form method="post" action="" class="form-horizontal" role="form">
+    {% csrf_token %}
+    {% bootstrap_form form layout="horizontal" %}
+    {% buttons layout="horizontal" %}
     <button class="btn btn-success" type="submit">{% trans 'Log in' %}</button>
     <input type="hidden" name="next" value="{{ next }}" />
-  {% endbuttons %}
-</form>
+    {% endbuttons %}
+  </form>
 
-<p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+  <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
+  <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+</div>
 {% endblock %}

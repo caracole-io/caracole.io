@@ -1,0 +1,42 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="article mb-4">
+  {% if short %}<a href="{% pageurl article %}">{% endif %}
+  <h1>{{ article.title }}</h1>
+  {% if short %}</a>{% endif %}
+  <div class="infosArticle">
+    <i class="fa fa-users"></i> {{ article.author }} ||
+    <i class="fa fa-calendar"></i> {{ article.first_published_at|date:"SHORT_DATE_FORMAT" }} ||
+    {% if article.tags.exists %}
+    <i class="fa fa-tags"></i> {% for tag in article.tags.all %}
+    <a href="{% url 'tag' tag.slug %}">{{ tag }}</a>{% if not forloop.last %}, {% endif%}{% endfor %} ||
+    {% endif %}
+    <i class="fa fa-comment"></i> 0</div>
+  <div>
+    {% if article.img %}
+    <div>
+      {% image article.img width-730 class="img-fluid" %}
+      <div class="figure-caption mb-3">{{ article.img_caption }}</div>
+    </div>
+    {% endif %}
+  </div>
+  {% if short %}
+  <div class="extrait">
+    {{ article.content|richtext|truncatechars_html:350 }}<a href="{% pageurl article %}"></a>
+  </div>
+  {% else %}
+  <div class="multicol">
+    {{ article.content|richtext }}
+  </div>
+  {% endif %}
+</div>
+{% if not short %}
+<section id="commentaires">
+  <h3><i class="fa fa-comment-dots"></i> Laisser un commentaire</h3>
+  <p><em>Bientôt disponible</em><p>
+</section>
+<hr>
+<section>
+  <h3><i class="fa fa-comments"></i> Les commentaires</h3>
+  <p><em>Bientôt disponible</em><p>
+</section>
+{% endif %}

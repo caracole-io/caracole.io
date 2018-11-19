@@ -1,0 +1,11 @@
+{% extends 'caracole/blog.html' %}
+{% load wagtailcore_tags %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% pageurl page.get_parent %}">{{ page.get_parent|lower }}</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+{% endblock %}
+
+{% block subcontent %}
+{% include 'caracole/_article.html' with short=False article=page.article %}
+{% endblock %}

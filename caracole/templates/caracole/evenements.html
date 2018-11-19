@@ -1,0 +1,79 @@
+{% extends 'caracole/cara_page.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<!-- Affichage Main -->
+<section class="container">
+  <div class="row">
+    <div class="col-md-8 mb-2">
+      <div class="titreRubrique">Les évènements Caracole</div>
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+          {% for evenement in page.evenement.all %}
+          <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}></li>
+          {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+          {% for evenement in page.evenement.all %}
+          <div class="carousel-item{% if forloop.first %} active{% endif %}">
+            {% image evenement.image width-730 class="d-block w-100"%}
+            <div class="carousel-caption d-none d-md-block">
+              <h3>{{ evenement.titre }}</h3>
+              <p class="mb-2">{{ evenement.description }}</p>
+              <p class="font-weight-bold">{{ evenement.date|date:"D / d / b / Y" }} - {{ evenement.lieu }} - {{ evenement.horaires }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="titreRubrique">Nos amis nous le disent</div>
+      <div class="scrollEvent scrollbar-red">
+        {% for evenement in page.evenement.all %}
+        <div class="evenementAutre clearfix">
+          <!-- Si pas image dans annonce, image standard neutre_94x94.png -->
+          {% image evenement.image fill-94x94 class="img-fluid float-left" %}
+          <div class="evenementAutreCaption float-left">
+            <p class="font-weight-bold">{{ evenement.date|date:"D // d M // Y" }}</p>
+            <h4>{{ evenement.titre }}</h4>
+            <p>{{ evenement.description|truncatechars:38 }}<br>{{ evenement.lieu }} - {{ evenement.horaires }}.</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="container">
+  <div class="row">
+    <div class="col-md-12"><div class="titreRubrique mt-5">Zoom sur...</div></div>
+    <div class="col-md-8">
+      {% image page.zoom_image width-730 class="img-fluid" %}
+    </div>
+    <div class="col-md-4">
+      <h3>{{ page.zoom_titre }}</h3>
+      {{ page.zoom_description|richtext }}
+    </div>
+  </div>
+</section>
+<!-- Retour sur les 3 derniers événements -->
+<section class="nouvelles mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><div class="titreRubrique">Retour sur les &eacute;v&eacute;nements</div></div>
+      {% for article in articles|slice:":3" %}
+      <div class="col-md-4">
+        <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
+        {% image article.img width-350 class="mb-3" %}
+        <div class="extrait">
+          {{ article.content|richtext|truncatechars_html:200 }}<a href="{% pageurl article %}"></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

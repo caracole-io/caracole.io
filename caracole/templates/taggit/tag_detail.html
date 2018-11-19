@@ -1,0 +1,13 @@
+{% extends 'caracole/blog.html' %}
+{% load wagtailcore_tags %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% slugurl 'blog' %}">Blog</a></li>
+<li class="breadcrumb-item active" aria-current="page">{{ tag }}</li>
+{% endblock %}
+
+{% block subcontent %}
+{% for blogtag in tag.caracole_blogtag_items.all %}
+{% include 'caracole/_article.html' with short=True article=blogtag.content_object %}
+{% endfor %}
+{% endblock %}

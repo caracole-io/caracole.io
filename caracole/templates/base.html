@@ -91,9 +91,10 @@
           <li><a href="http://twitter.com/caracole_io" target="_blank"><i class="fab fa-twitter-square"></i>  twitter.com/caracole_io</a></li>
           <li><a href="http://www.facebook.com/caracole.io" target="_blank"><i class="fab fa-facebook-square"></i>  www.facebook.com/caracole.io</a></li>
         </ul>
-        <form>
+        <form action="{% url 'caramel' %}" method="post" role="form">
+          {% csrf_token %}
           <div class="form-group">
-            <small class="form-text">Je m'abonne au Cara'mel (lettre d'infos).</small> <input id="adresseCourriel" type="email" class="form-control" aria-describedby="adresseCourriel" placeholder="Mon adresse courriel">
+            <small class="form-text">Je m'abonne au Cara'mel (lettre d'infos).</small> <input id="adresseCourriel" type="email" class="form-control" aria-describedby="adresseCourriel" placeholder="Mon adresse courriel" name="mail">
           </div>
           <button type="submit" class="btn btn-outline-light">Envoyer</button>
         </form>

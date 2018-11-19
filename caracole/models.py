@@ -2,6 +2,7 @@ from django.db import models
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
+from ndh.models import TimeStampedModel
 from taggit.models import TaggedItemBase
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.core.fields import RichTextField
@@ -100,3 +101,13 @@ class Article(Page):
         FieldPanel('content'),
         FieldPanel('tags'),
     ]
+
+
+class Caramel(TimeStampedModel):
+    mail = models.EmailField()
+
+    def __str__(self):
+        return self.mail
+
+    def get_absolute_url(self):
+        return '/'

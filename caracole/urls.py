@@ -9,11 +9,14 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('cms/', include(wagtailadmin_urls)),
+    path('caramel/', views.CaramelView.as_view(), name='caramel'),
     path('documents/', include(wagtaildocs_urls)),
     path('videgrenier/', include('videgrenier.urls')),
     path('vide-grenier/', RedirectView.as_view(url='/videgrenier/', permanent=True)),

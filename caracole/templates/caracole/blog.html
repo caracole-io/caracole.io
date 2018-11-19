@@ -23,7 +23,9 @@
   <div class="titreRubrique">Rubriques</div>
   <ul class="list-unstyled">
     {% for tag in tags %}
-    <li><i class="fa fa-bookmark"></i> <a href="{% url 'tag' tag.slug %}">{{ tag|title }}</a></li>
+    <li><i class="fa fa-bookmark"></i> <a href="{% url 'tag' tag.slug %}">{{ tag|title }}
+        ({{ tag.caracole_blogtag_items.count }})
+      </a></li>
     {% endfor %}
   </ul>
 </div>

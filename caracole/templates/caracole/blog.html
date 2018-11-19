@@ -10,19 +10,21 @@
 
 {% block rubriques %}
 <!--
-<div class="rubrique">
+  <div class="rubrique">
   <div class="titreRubrique">Calendrier</div>
   TODO
-</div>
-<div class="rubrique">
+  </div>
+  <div class="rubrique">
   <div class="titreRubrique">Archives</div>
   TODO
-</div>
+  </div>
 -->
 <div class="rubrique">
   <div class="titreRubrique">Rubriques</div>
-  {% for tag in tags %}
-  <a href="{% url 'tag' tag.slug %}">{{ tag }}</a>
-  {% endfor %}
+  <ul class="list-unstyled">
+    {% for tag in tags %}
+    <li><i class="fa fa-bookmark"></i> <a href="{% url 'tag' tag.slug %}">{{ tag|title }}</a></li>
+    {% endfor %}
+  </ul>
 </div>
 {% endblock %}

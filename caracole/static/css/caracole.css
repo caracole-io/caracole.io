@@ -223,6 +223,17 @@ table {
 	padding-left: 15px;
 }
 
+.blog-sidebar .list-unstyled li::before {
+    content: "";
+}
+
+.blog-sidebar .list-unstyled li {
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: #DADADA solid 1px;
+    font-size: 0.90em;
+}
+
 .blog-sidebar p{
 	text-align: left;
 	font-size: 0.85em;

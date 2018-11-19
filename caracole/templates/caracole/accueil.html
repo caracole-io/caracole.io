@@ -52,36 +52,19 @@
       <div class="col-md-4 agenda">
         <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>
         <ul class="list-unstyled">
+          {% for evenement in evenements|slice:":3" %}
           <li class="media">
-            <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/mystere_evenement_petit.jpg' %}" alt="événement mystere"></a>
+            {% image evenement.image fill-94x94 class="mr-3 img-thumbnail" %}
             <div class="media-body mb-2">
-              <!-- Affichage 3 derniers événements -->
-              <p class="dateDesc">sam 13 oct 2018 - &agrave; partir de 18H</p>
-              <a href=""><h6 class="mt-0 mb-1">Myst&egrave;re aux 50</h6></a>
+              <p class="dateDesc">{{ evenement.date|date:"D d b Y" }} - {{ evenement.horaires }}</p>
+              <h6 class="mt-0 mb-1">{{ evenement.titre }}</h6>
               <!-- Extrait 95 caractères -->
-              <p class="descriptionEvent">On ne vous en dit pas plus... R&eacute;servez votre soir&eacute;e, vous ne le regretterez pas...</p>
+              <p class="descriptionEvent">{{ evenement.description|truncatechars:95 }}</p>
             </div>
           </li>
-          <li class="media">
-            <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/carabricole_evenement_petit.jpg' %}" alt="Carabricole"></a>
-            <div class="media-body mb-2">
-              <p class="dateDesc">sam 13 oct 2018 - 14h30 // 18h30</p>
-              <a href="agenda.html"><h6 class="mt-0 mb-1">Car@bricole</h6></a>
-              <!-- Extrait 95 caractères -->
-              <p class="descriptionEvent">Un aspirateur qui souffle, une horloge qui dort ? Venez les r&eacute;parer avec nous !</p>
-            </div>
-          </li>
-          <li class="media">
-            <a href=""><img class="mr-3 img-thumbnail" src="{% static 'img/neutre_94x94.png' %}" alt="soutien aux faucheurs"></a>
-            <div class="media-body mb-2">
-              <p class="dateDesc">sam 13 nov 2018 - 20H</p>
-              <a href=""><h6 class="mt-0 mb-1">Collégiale</h6></a>
-              <!-- Extrait 95 caractères -->
-              <p class="descriptionEvent">Les r&eacute;unions du Coll&egrave;ge de sont ouverts &agrave; tous les adh&eacute;rents. Merci de pr&eacute;venir de votre venue.</p>
-            </div>
-          </li>
+          {% endfor %}
         </ul>
-        <a class="btn btn-outline-success" href="agenda.html"><i class="fa fa-sign-out"></i>  Tous les &eacute;v&eacute;nements</a>
+        <a class="btn btn-outline-success" href="{% slugurl 'agenda' %}"><i class="fa fa-sign-out-alt"></i>  Tous les événements</a>
       </div>
     </div>
   </div>

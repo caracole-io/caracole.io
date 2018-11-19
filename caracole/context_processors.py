@@ -9,4 +9,5 @@ def wagtree(request):
         'sections': models.Section.objects.all(),
         'tags': Tag.objects.all(),
         'articles': models.Article.objects.live(),
+        'evenements': models.Evenement.objects.all(),
     }

@@ -93,24 +93,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12"><div class="titreRubrique">Les articles r&eacute;cents</div></div>
+        {% for article in articles|slice:":3" %}
+
         <div class="col-md-4">
-          <h3><a href="#">Cumque pertinacius ut legum</a></h3>
-          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="Les Cabas de Caracole"/>
-          <!-- Affichage extrait 50 mots -->
-          <p>Spatio cum consuetudo Scaevola ceteris maiorum se spatio Turpis se minime si et neque in ut res in Turpis turpes est quis sumus consuetudo et causa contra publicam de loco in iam rei neque amicitia ceteris iam ceteris eo casus turpes Deflexit eo futuros causa minime quis causa longe cum<a href=""></a></p>
+          <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
+          {% image article.img width-350 class="mb-3" %}
+          <div class="extrait">
+            {{ article.content|richtext|truncatechars_html:200 }}<a href="{% pageurl article %}"></a>
+          </div>
         </div>
-        <div class="col-md-4">
-          <h3><a href="#">Et eodem impetu Domitianum</a></h3>
-          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="la chorale de Caracole"/>
-          <!-- Affichage extrait 50 mots -->
-          <p>Cela ressemblait aux gros ordinateurs que David avait pu voir dans des films de science fiction. Beaucoup de petites lumières indiquaient qu’il était en fonction. À la base, une sorte d’aquarium avait été installé tout autour. Certainement le système de refroidissement car des bulles montai<a href=""></a></p>
-        </div>
-        <div class="col-md-4">
-          <h3><a href="#">Vide, quantum, inquam, fallare</a></h3>
-          <img class="mb-3" src="{% static 'img/350x150.png' %}" alt="c@rabricole"/>
-          <!-- Affichage extrait 50 mots -->
-          <p>In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit<a href=""></a></p>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>

@@ -1,4 +1,5 @@
 {% extends 'caracole/cara_page.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block page_head %}{% endblock %}
 
@@ -9,16 +10,19 @@
 {% endblock %}
 
 {% block rubriques %}
-<!--
-  <div class="rubrique">
-  <div class="titreRubrique">Calendrier</div>
-  TODO
-  </div>
-  <div class="rubrique">
-  <div class="titreRubrique">Archives</div>
-  TODO
-  </div>
--->
+<div class="rubrique">
+  <div class="titreRubrique">Articles récents</div>
+  <ul class="articlesRecents list-unstyled">
+  {% for article in articles %}
+  <li class="media"><a href="{% pageurl article %}">{% image article.img fill-94x94 class="mr-3 img-thumbnail" %}</a>
+    <div class="media-body">
+      <a href="{% pageurl article %}"><h6 class="mt-0 mb-1">{{ article.title }}</h6></a>
+      {{ article.content|richtext|truncatechars_html:95 }}
+    </div>
+  </li>
+  {% endfor %}
+  </ul>
+</div>
 <div class="rubrique">
   <div class="titreRubrique">Rubriques</div>
   <ul class="list-unstyled">
@@ -26,7 +30,7 @@
     <li><i class="fa fa-bookmark"></i> <a href="{% url 'tag' tag.slug %}">{{ tag|title }}
         ({{ tag.caracole_blogtag_items.count }})
       </a></li>
-    {% endfor %}
+      {% endfor %}
   </ul>
 </div>
 {% endblock %}

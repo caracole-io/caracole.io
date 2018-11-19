@@ -13,9 +13,10 @@
 <div class="rubrique">
   <div class="titreRubrique">Articles récents</div>
   <ul class="articlesRecents list-unstyled">
-  {% for article in articles %}
-  <li class="media"><a href="{% pageurl article %}">{% image article.img fill-94x94 class="mr-3 img-thumbnail" %}</a>
-    <div class="media-body">
+  {% for article in articles|slice:":3" %}
+  <li class="media">
+    <a href="{% pageurl article %}">{% image article.img fill-94x94 class="mr-3 img-thumbnail" %}</a>
+    <div class="media-body mb-2">
       <a href="{% pageurl article %}"><h6 class="mt-0 mb-1">{{ article.title }}</h6></a>
       {{ article.content|richtext|truncatechars_html:95 }}
     </div>

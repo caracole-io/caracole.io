@@ -234,6 +234,12 @@ table {
     font-size: 0.90em;
 }
 
+.blog-sidebar .list-unstyled li.media {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: 0px;
+}
+
 .blog-sidebar p{
 	text-align: left;
 	font-size: 0.85em;

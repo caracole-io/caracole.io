@@ -95,6 +95,9 @@ p, li {
   text-align: justify;
 }
 
+b, strong{
+	font-weight: 700;
+}
 /*----------------- | Balises, Id, conteneurs... |----------------------------*/
 
 #header{

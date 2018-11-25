@@ -28,10 +28,15 @@
   <div class="titreRubrique">Rubriques</div>
   <ul class="list-unstyled">
     {% for tag in tags %}
-    <li><i class="fa fa-bookmark"></i> <a href="{% url 'tag' tag.slug %}">{{ tag|title }}
+    {% if tag.caracole_blogtag_items.count > 0 %}
+    <li>
+      <i class="fa fa-bookmark"></i>
+      <a href="{% url 'tag' tag.slug %}">{{ tag|title }}
         ({{ tag.caracole_blogtag_items.count }})
-      </a></li>
-      {% endfor %}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
   </ul>
 </div>
 {% endblock %}

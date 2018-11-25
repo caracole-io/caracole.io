@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fd1f182a54b74fa3cebf9506eddc8151d1ca190f1e82aaf1f963d9708520b3e7"
+            "sha256": "9ec31dbde9a2b0977631d24d9827e695c51767b63c9db1c050bd74b40d034594"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -86,6 +86,14 @@
             ],
             "version": "==4.3"
         },
+        "django-yeouia": {
+            "hashes": [
+                "sha256:4b168d47aed43eb8a6d5d0be2f57a5eef6a934118117beed76988fcc57c154af",
+                "sha256:c6843be54720d2c953de7a4bfecc1b4cfb07e067107c28d9e7c53178d25cda18"
+            ],
+            "index": "pypi",
+            "version": "==2.0.0"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:607865b0bb1598b153793892101d881466bd5a991de12bd6229abb18b1c86136",
@@ -95,9 +103,9 @@
         },
         "draftjs-exporter": {
             "hashes": [
-                "sha256:1a4252b40bd3b6d251969e9fa59965a617108d48661367ab8406322422600fad"
+                "sha256:8430b6c0f2a1c644ef9959b36f2f36f093f8209b94f81b4443216d3f386a3bce"
             ],
-            "version": "==2.1.4"
+            "version": "==2.1.5"
         },
         "html5lib": {
             "hashes": [
@@ -207,8 +215,7 @@
         },
         "webencodings": {
             "hashes": [
-                "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78",
-                "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"
+                "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"
             ],
             "version": "==0.5.1"
         },
@@ -425,10 +432,10 @@
         },
         "pygments": {
             "hashes": [
-                "sha256:78f3f434bcc5d6ee09020f92ba487f95ba50f1e3ef83ae96b9d5ffa1bab25c5d",
-                "sha256:dbae1046def0efb574852fab9e90209b23f556367b5a320c0bcb871c77c3e8cc"
+                "sha256:6301ecb0997a52d2d31385e62d0a4a4cf18d2f2da7054a5ddad5c366cd39cee7",
+                "sha256:82666aac15622bd7bb685a4ee7f6625dd716da3ef7473620c192c0168aae64fc"
             ],
-            "version": "==2.2.0"
+            "version": "==2.3.0"
         },
         "pygments-zenburn": {
             "hashes": [
@@ -516,11 +523,11 @@
         },
         "yapf": {
             "hashes": [
-                "sha256:b96815bd0bbd2ab290f2ae9e610756940b17a0523ef2f6b2d31da749fc395137",
-                "sha256:cebb6faf35c9027c08996c07831b8971f3d67c0eb615269f66dfd7e6815fdc2a"
+                "sha256:8aa7f9abdb97b4da4d3227306b88477982daafef0a96cc41639754ca31f46d55",
+                "sha256:f2df5891481f94ddadfbf8ae8ae499080752cfb06005a31bbb102f3012f8b944"
             ],
             "index": "pypi",
-            "version": "==0.24.0"
+            "version": "==0.25.0"
         }
     }
 }

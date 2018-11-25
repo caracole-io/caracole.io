@@ -157,3 +157,5 @@ DATES_VIDE_GRENIER = {
 NDH_TEMPLATES_SETTINGS = [
     'DATES_VIDE_GRENIER',
 ]
+
+AUTHENTICATION_BACKENDS = ['yeouia.backends.YummyEmailOrUsernameInsensitiveAuth']

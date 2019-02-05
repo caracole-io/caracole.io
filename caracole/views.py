@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.views.generic import CreateView, DetailView, RedirectView, TemplateView
+from django.views.generic import CreateView
 
 from . import models
 

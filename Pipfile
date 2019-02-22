@@ -8,8 +8,8 @@ ndh = "*"
 wagtail = "*"
 django-registration-redux = "*"
 django = "<2.2"
-pillow = "==4.3.0"  # Pinned to alpine 3.8's version
-olefile = "==0.43"  # Pinned to alpine 3.8's version
+pillow = "==5.4.1"  # Pinned to alpine 3.9's version
+olefile = "==0.43"  # Pinned to alpine 3.9's version
 django-yeouia = "*"
 
 [dev-packages]

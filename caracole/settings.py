@@ -149,9 +149,10 @@ ACCOUNT_ACTIVATION_DAYS = 15
 REGISTRATION_AUTO_LOGIN = True
 
 DATES_VIDE_GRENIER = {
-    'open': date(2018, 4, 4),
-    'close': date(2018, 6, 20),
-    'event': date(2018, 6, 24),
+    'open': date(2019, 3, 18),
+    'close': date(2019, 6, 19),
+    'event': date(2019, 6, 23),
+    'inscriptions': [date(2019, 6, 5), date(2019, 6, 12), date(2019, 6, 19)],
 }
 
 NDH_TEMPLATES_SETTINGS = [

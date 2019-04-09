@@ -152,7 +152,9 @@ DATES_VIDE_GRENIER = {
     'open': date(2019, 4, 18),
     'close': date(2019, 6, 19),
     'event': date(2019, 6, 23),
-    'inscriptions': [date(2019, 6, 5), date(2019, 6, 12), date(2019, 6, 19)],
+    'inscriptions': [date(2019, 5, 15), date(2019, 5, 22), date(2019, 5, 29), date(2019, 6, 5), date(2019, 6, 12),
+        date(2019, 6, 19)],
+
 }
 
 NDH_TEMPLATES_SETTINGS = [

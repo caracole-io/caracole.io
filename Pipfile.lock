@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "817536d0a02c01d8118d6e82657b87fdecac7d6e7b4784a3fdee42912c5ca071"
+            "sha256": "f2dcfe5cba61d5930b06ee3e29a2ed196366108a4adef5485d66d988aabe2c1a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -101,6 +101,14 @@
                 "sha256:f7a266260d656e1cf4ca54d7a7349609dc8af4fe2590edd0ecd7d7643ea94a17"
             ],
             "version": "==3.9.2"
+        },
+        "dmdm": {
+            "hashes": [
+                "sha256:c5c6b8fced00b941b8745b34a9bc0080a5bacc2161f81a356e98f51a72e9500d",
+                "sha256:c624914cbfeefd4561eea1ea07bd7650188fcf017fbcf9623e97246dbf8c64a9"
+            ],
+            "index": "pypi",
+            "version": "==1.4.0"
         },
         "draftjs-exporter": {
             "hashes": [
@@ -218,11 +226,11 @@
         },
         "wagtail": {
             "hashes": [
-                "sha256:1ef626e645911badbabf4e0d7997a191ebf4ec1ea07880e44831767295bd9480",
-                "sha256:49b3732b5979bc70c31e8d10b5d1913b0ace9009e65a06b36493a6083fcc4bdd"
+                "sha256:0b1357bc66873d1c3403791e717a15c8b01d3d0e67083fe5f9eff60d7f7d9d77",
+                "sha256:19de8dd6390429c1c6e921487e997a64fa9334da0c6255f1e9988d30729fce1a"
             ],
             "index": "pypi",
-            "version": "==2.5rc1"
+            "version": "==2.5"
         },
         "webencodings": {
             "hashes": [
@@ -328,11 +336,11 @@
         },
         "ipython": {
             "hashes": [
-                "sha256:b038baa489c38f6d853a3cfc4c635b0cda66f2864d136fe8f40c1a6e334e2a6b",
-                "sha256:f5102c1cd67e399ec8ea66bcebe6e3968ea25a8977e53f012963e5affeb1fe38"
+                "sha256:54c5a8aa1eadd269ac210b96923688ccf01ebb2d0f21c18c3c717909583579a8",
+                "sha256:e840810029224b56cd0d9e7719dc3b39cf84d577f8ac686547c8ba7a06eeab26"
             ],
             "index": "pypi",
-            "version": "==7.4.0"
+            "version": "==7.5.0"
         },
         "ipython-genutils": {
             "hashes": [

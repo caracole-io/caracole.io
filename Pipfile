@@ -10,6 +10,7 @@ django-registration-redux = "*"
 django = "<2.3"
 pillow = "==5.4.1"  # Pinned to alpine 3.9's version
 olefile = "==0.43"  # Pinned to alpine 3.9's version
+lxml = "==4.2.5"    # Pinned to alpine 3.9's version
 django-yeouia = "*"
 dmdm = "*"
 

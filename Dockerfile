@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.11
 
 EXPOSE 8000
 
@@ -9,6 +9,7 @@ RUN apk update -q && apk add -q --no-cache \
     py3-lxml \
     py3-pillow \
     py3-psycopg2 \
+    python3 \
  && pip3 install --no-cache-dir -U pip \
  && pip3 install --no-cache-dir \
     gunicorn \

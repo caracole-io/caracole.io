@@ -7,10 +7,9 @@ name = "pypi"
 ndh = "*"
 wagtail = "*"
 django-registration-redux = "*"
-django = "<2.3"
-pillow = "==5.4.1"  # Pinned to alpine 3.9's version
-olefile = "==0.43"  # Pinned to alpine 3.9's version
-lxml = "==4.2.5"    # Pinned to alpine 3.9's version
+django = "<4"
+pillow = "==6.2.1"  # Pinned to alpine 3.11's version
+lxml = "==4.4.2"    # Pinned to alpine 3.11's version
 django-yeouia = "*"
 dmdm = "*"
 
@@ -23,9 +22,3 @@ raven = "*"
 yapf = "*"
 pygments-zenburn = "*"
 ipython = "*"
-
-[requires]
-python_version = "3.7"
-
-[pipenv]
-allow_prereleases = true

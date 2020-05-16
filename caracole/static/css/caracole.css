@@ -648,5 +648,9 @@ a[href$=".zip"] {
 }
 
 a.btn:link, a.btn:visited {
-    color: #fff
+    color: #fff;
+}
+
+a.btn.btn-outline-light:hover {
+    color: #212529;
 }

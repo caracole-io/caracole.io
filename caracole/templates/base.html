@@ -148,6 +148,7 @@
             <input name="password" id="passWord" type="password" class="form-control" aria-describedby="passWord" placeholder="Mon mot de passe">
           </div>
           <button type="submit" class="btn btn-outline-light">Se connecter</button>
+          <a class="btn btn-outline-light" href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
         </form>
         {% endif %}
       </div>

@@ -20,36 +20,35 @@
         <h3>Permanence de l'association</h3>
         {{ page.content|richtext }}
       </div>
-      <!--
       <div class="col-md-12"><h3 class="courriel">Nous envoyer un message</h3></div>
-      <form class="col-md-12 contacts">
+      <form action="{%url 'mail-contact' %}" method="post" role="form" class="col-md-12 contacts">
+        {% csrf_token %}
         <div class="form-row">
           <div class="col-md-6 mb-3">
-            <input type="text" class="form-control" placeholder="Votre nom">
+            <input type="text" class="form-control" placeholder="Votre nom" id="form_name" name="form_name">
           </div>
           <div class="col-md-6 mb-3">
-            <input type="text" class="form-control" placeholder="Votre adresse courriel">
+            <input type="text" class="form-control" placeholder="Votre adresse courriel" id="form_adress" name="form_adress">
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-6 mb-3">
-            <textarea class="form-control" rows="5" placeholder="Votre message"></textarea>
+            <textarea class="form-control" rows="5" placeholder="Votre message" id="form_message" name="form_message"></textarea>
           </div>
           <div class="col-md-6 mb-3">
             <label for="inputState">Ce message s'adresse &agrave; :</label>
-            <select id="inputState" class="form-control">
-              <option selected>L'association : bénévolat dans l'asso, questions sur son fonctionnement...</option>
-              <option>Le Cabas : proposer un producteur, besoin d'info sur un produit...</option>
-              <option>Carabricole : proposer une intervention, questions quoi-où-comment...</option>
-              <option>La chorale : proposer votre voix, questions sur le fonctionnement...</option>
-              <option>Le collège : savoir où se tient le prochain collège, proposer un événement...</option>
-              <option>La Com'com : besoin d'un logo, questions sur la communication...</option>
-              <option>Le jardin partagé : envie de jardiner avec nous, des iris ou une brouette à donner...</option>
+            <select id="inputState" class="form-control" id="form_dest" name="form_dest">
+              <option value="contact" selected>L'association : bénévolat dans l'asso, questions sur son fonctionnement...</option>
+              <option value="cabas">Le Cabas : proposer un producteur, besoin d'info sur un produit...</option>
+              <option value="carabricole">Carabricole : proposer une intervention, questions quoi-où-comment...</option>
+              <option value="chorale">La chorale : proposer votre voix, questions sur le fonctionnement...</option>
+              <option value="college">Le collège : savoir où se tient le prochain collège, proposer un événement...</option>
+              <option value="comcom">La Com'com : besoin d'un logo, questions sur la communication...</option>
+              <option value="jardin">Le jardin partagé : envie de jardiner avec nous, des iris ou une brouette à donner...</option>
             </select></div>
         </div>
         <button type="submit" class="btn btn-success">Envoyer</button>
       </form>
-      -->
       <!-- / Affichage Main -->
     </div>
   </div>

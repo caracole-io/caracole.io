@@ -16,8 +16,8 @@ echo DEBUG=True >> .env  # not in production
 ### Install Dependencies
 
 ```
-pip3 install -U pipenv
-pipenv install --dev
+pip3 install -U poetry
+poetry install
 ```
 
 ### Create an sqlite DB

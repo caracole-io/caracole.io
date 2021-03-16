@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "caracole.io"
+version = "0.1.0"
+description = "caracole.io website"
+authors = ["Guilhem Saurel <webmaster@caracole.io>"]
+license = "BSD-2-Clause"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ndh = "^3.10.4"
+wagtail = "^2.12.3"
+django-registration-redux = "^2.9"
+django-yeouia = "^2.0.0"
+dmdm = "^1.4.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.0"
+yapf = "^0.31.0"
+pygments-zenburn = "^0.9.0"
+ipython = "^7.21.0"
+django-stubs = "^1.7.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

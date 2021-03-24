@@ -11,15 +11,14 @@ install:
   - poetry config virtualenvs.create false --local
   - poetry install --no-interaction --no-ansi
 env:
-  - SECRET_KEY='pipo' EMAIL_HOST_PASSWORD='pipo' POSTGRES_HOST='localhost' POSTGRES_PASSWORD='' RAVEN=True DSN=''
+  - SECRET_KEY='pipo' EMAIL_HOST_PASSWORD='pipo' POSTGRES_HOST='localhost' POSTGRES_PASSWORD='' RAVEN=False DSN=''
 script:
   - ./manage.py migrate
-  - PYTHONWARNINGS=always coverage run manage.py test
+  - PYTHONWARNINGS=always ./manage.py test
   - flake8 .
   - yapf -dr .
   - safety check
   - docker build -t ${TRAVIS_REPO_SLUG/-io/} .
 after_success:
-  - coveralls
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push ${TRAVIS_REPO_SLUG/-io/}

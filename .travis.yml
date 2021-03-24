@@ -1,20 +1,22 @@
 language: python
-dist: xenial
+dist: focal
 sudo: required
 python:
-  - 3.6
+  - 3.9
 services:
   - postgresql
   - docker
 install:
-  - pip install pipenv
-  - pipenv install --dev
+  - pip install poetry psycopg2
+  - poetry config virtualenvs.create false --local
+  - poetry install --no-interaction --no-ansi
 env:
   - SECRET_KEY='pipo' EMAIL_HOST_PASSWORD='pipo' POSTGRES_HOST='localhost' POSTGRES_PASSWORD='' RAVEN=True DSN=''
 script:
   - ./manage.py migrate
   - PYTHONWARNINGS=always coverage run manage.py test
   - flake8 .
+  - yapf -dr .
   - safety check
   - docker build -t ${TRAVIS_REPO_SLUG/-io/} .
 after_success:

@@ -13,7 +13,7 @@ install:
 env:
   - SECRET_KEY='pipo' EMAIL_HOST_PASSWORD='pipo' POSTGRES_HOST='localhost' POSTGRES_PASSWORD='' RAVEN=False DSN=''
 script:
-  - ./manage.py migrate
+  - python -Wa ./manage.py migrate
   - PYTHONWARNINGS=always ./manage.py test
   - flake8 .
   - yapf -dr .

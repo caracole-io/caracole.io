@@ -13,10 +13,12 @@ from wagtail.search import index
 
 class Accueil(Page):
     content = RichTextField('texte', blank=True)
+    permanences = RichTextField('permanences', blank=True)
 
-    search_fields = Page.search_fields + [index.SearchField('content')]
+    search_fields = Page.search_fields + [index.SearchField('content'), index.SearchField('permanences')]
     content_panels = Page.content_panels + [
         FieldPanel('content', classname='full'),
+        FieldPanel('permanences', classname='full'),
         InlinePanel('carousels', label='Carousel')
     ]
 

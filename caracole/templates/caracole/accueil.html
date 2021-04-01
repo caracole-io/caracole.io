@@ -44,10 +44,9 @@
 <section class="mt-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-12"><div class="titreRubrique">L'actu du moment</div></div>
+      <div class="col-md-12"><div class="titreRubrique">Les permanences bureau</div></div>
       <div class="col-md-8">
-        <h3><i class="fa fa-commenting"></i> Sandrine nous parle de Caracole</h3>
-        <img class="img-fluid mb-3" src="{% static 'img/730x410.png' %}" alt="vidéo"/>
+        {{ page.permanences|richtext }}
       </div>
       <div class="col-md-4 agenda">
         <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>

@@ -468,11 +468,11 @@ a[href$=".zip"] {
 	position: relative;
 	width: 100%;
 	margin-bottom: 2px;
+    height: 100px;
 }
 
 .evenementAutreCaption{
 	background-color: #E9E9E9;
-	padding: 5px;
 	min-width: 242px;
 	height: 94px;
 }
@@ -480,10 +480,12 @@ a[href$=".zip"] {
 .evenementAutreCaption p{
 	margin-bottom: 5px;
 	font-size: 0.8em;
+    margin-left: 100px;
 }
 
 .evenementAutreCaption h4{
 	margin: 0;
+    margin-left: 100px;
 }
 
 .scrollEvent{

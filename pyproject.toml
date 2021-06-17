@@ -8,7 +8,7 @@ license = "BSD-2-Clause"
 [tool.poetry.dependencies]
 python = "^3.9"
 ndh = "^3.10.4"
-wagtail = "^2.12.3"
+wagtail = "^2.12.5"
 django-registration-redux = "^2.9"
 django-yeouia = "^2.0.0"
 dmdm = "^1.4.3"

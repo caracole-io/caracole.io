@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "modelcluster",
     "taggit",
     "bootstrap4",
-    "videgrenier",
+    # "videgrenier",
 ]
 
 MIDDLEWARE = [

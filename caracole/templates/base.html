@@ -38,7 +38,7 @@
                 </div>
               </li>
               {% endfor %}
-              {#
+              {% comment %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                   Vide Grenier
@@ -54,7 +54,7 @@
                   {% endif %}
                 </div>
               </li>
-              #}
+              {% endcomment %}
               <li class="nav-item"><a class="nav-link" href="{% slugurl 'agenda' %}">Agenda</a></li>
               <li class="nav-item"><a class="nav-link" href="{% slugurl 'contacts' %}">Contacts</a></li>
               <li class="nav-item"><a class="nav-link" href="{% slugurl 'blog' %}">Le Blog</a></li>

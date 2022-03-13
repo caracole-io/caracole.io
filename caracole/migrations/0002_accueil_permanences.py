@@ -7,13 +7,15 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('caracole', '0001_initial'),
+        ("caracole", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='accueil',
-            name='permanences',
-            field=wagtail.core.fields.RichTextField(blank=True, verbose_name='permanences'),
+            model_name="accueil",
+            name="permanences",
+            field=wagtail.core.fields.RichTextField(
+                blank=True, verbose_name="permanences"
+            ),
         ),
     ]

@@ -12,17 +12,17 @@ from wagtail.documents import urls as wagtaildocs_urls
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.default.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('cms/', include(wagtailadmin_urls)),
-    path('caramel/', views.CaramelView.as_view(), name='caramel'),
-    path('mail-contact/', views.mail_contact, name='mail-contact'),
-    path('documents/', include(wagtaildocs_urls)),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("registration.backends.default.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("cms/", include(wagtailadmin_urls)),
+    path("caramel/", views.CaramelView.as_view(), name="caramel"),
+    path("mail-contact/", views.mail_contact, name="mail-contact"),
+    path("documents/", include(wagtaildocs_urls)),
     # path('videgrenier/', include('videgrenier.urls')),
     # path('vide-grenier/', RedirectView.as_view(url='/videgrenier/', permanent=True)),
-    path('blog/tag/<slug>', DetailView.as_view(model=Tag), name='tag'),
-    path('', include(wagtail_urls)),
+    path("blog/tag/<slug>", DetailView.as_view(model=Tag), name="tag"),
+    path("", include(wagtail_urls)),
 ]
 
 if settings.DEBUG:

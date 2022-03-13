@@ -1,19 +1,27 @@
 import os
+from pathlib import Path
 from datetime import date
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 PROJECT = "caracole"
 PROJECT_VERBOSE = PROJECT.capitalize()
 WAGTAIL_SITE_NAME = PROJECT_VERBOSE
 
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+if DEBUG:
+    SECRET_KEY = "django-insecure-un&^-yd2(xdo#_@or@bozh)trtweg))^oegpor8@=$srjplaz1"
+else:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+
 DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "io")
 HOSTNAME = os.environ.get("ALLOWED_HOST", f"{PROJECT}.{DOMAIN_NAME}")
 ALLOWED_HOSTS = [HOSTNAME, f"{HOSTNAME}:8000"]
 ALLOWED_HOSTS += [f"www.{host}" for host in ALLOWED_HOSTS]
+CSRF_TRUSTED_ORIGINS = [
+    "http://" if DEBUG else "https://" + host for host in ALLOWED_HOSTS
+]
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = os.environ["SECRET_KEY"]
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 INSTALLED_APPS = [
     PROJECT,
@@ -82,7 +90,7 @@ DB = os.environ.get("DB", "db.sqlite3")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, DB),
+        "NAME": BASE_DIR / DB,
     }
 }
 if DB == "postgres":
@@ -94,18 +102,19 @@ if DB == "postgres":
         PASSWORD=os.environ["POSTGRES_PASSWORD"],
     )
 
+_APV = "django.contrib.auth.password_validation"
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": f"{_APV}.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": f"{_APV}.MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": f"{_APV}.CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": f"{_APV}.NumericPasswordValidator",
     },
 ]
 
@@ -122,6 +131,7 @@ MEDIA_URL = "/media/"
 STATIC_URL = "/static/"
 STATIC_ROOT = f"/srv/{PROJECT}/static/"
 LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465

@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.core.fields.RichTextField(blank=True, verbose_name="texte"),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="texte"),
                 ),
             ],
             options={
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.core.fields.RichTextField(
+                    wagtail.fields.RichTextField(
                         blank=True, verbose_name="contenu"
                     ),
                 ),
@@ -230,7 +230,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.core.fields.RichTextField(
+                    wagtail.fields.RichTextField(
                         blank=True, verbose_name="contenu"
                     ),
                 ),
@@ -298,7 +298,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.core.fields.RichTextField(
+                    wagtail.fields.RichTextField(
                         blank=True, verbose_name="contenu"
                     ),
                 ),
@@ -369,7 +369,7 @@ class Migration(migrations.Migration):
                 ("title", models.CharField(max_length=250, verbose_name="titre")),
                 (
                     "content",
-                    wagtail.core.fields.RichTextField(
+                    wagtail.fields.RichTextField(
                         blank=True, verbose_name="contenu"
                     ),
                 ),
@@ -414,7 +414,7 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("zoom_titre", models.CharField(max_length=200)),
-                ("zoom_description", wagtail.core.fields.RichTextField()),
+                ("zoom_description", wagtail.fields.RichTextField()),
                 (
                     "zoom_image",
                     models.ForeignKey(

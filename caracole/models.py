@@ -7,7 +7,6 @@ from taggit.models import TaggedItemBase
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail.fields import RichTextField
 from wagtail.models import Orderable, Page
-from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 
@@ -39,7 +38,7 @@ class Carousel(Orderable):
         FieldPanel("title"),
         FieldPanel("text"),
         FieldPanel("href"),
-        ImageChooserPanel("img"),
+        FieldPanel("img"),
     ]
 
 
@@ -67,7 +66,7 @@ class CaraPage(Page):
     ]
     content_panels = (
         Page.content_panels
-        + [ImageChooserPanel("img")]
+        + [FieldPanel("img")]
         + [
             FieldPanel(field)
             for field in ["nom", "img_caption", "exergue", "citation", "content"]
@@ -104,7 +103,7 @@ class Amis(Orderable):
     title = models.CharField("titre", max_length=250)
     href = models.URLField("lien", blank=True, null=True)
 
-    panels = [FieldPanel("title"), FieldPanel("href"), ImageChooserPanel("logo")]
+    panels = [FieldPanel("title"), FieldPanel("href"), FieldPanel("logo")]
 
 
 class Blog(Page):
@@ -133,7 +132,7 @@ class Article(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel("author"),
-        ImageChooserPanel("img"),
+        FieldPanel("img"),
         FieldPanel("img_caption"),
         FieldPanel("content"),
         FieldPanel("tags"),
@@ -158,7 +157,7 @@ class Evenements(CaraPage):
     zoom_description = RichTextField()
 
     content_panels = CaraPage.content_panels + [
-        ImageChooserPanel("zoom_image"),
+        FieldPanel("zoom_image"),
         FieldPanel("zoom_titre"),
         FieldPanel("zoom_description"),
         InlinePanel("evenement", label="Évènements"),
@@ -177,7 +176,7 @@ class Evenement(Orderable):
     lieu = models.CharField(max_length=200)
     caracole = models.BooleanField("évènement de caracole", default=True)
 
-    panels = [ImageChooserPanel("image")] + [
+    panels = [FieldPanel("image")] + [
         FieldPanel(field)
         for field in ["titre", "description", "lieu", "date", "horaires", "caracole"]
     ]

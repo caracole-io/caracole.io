@@ -179,3 +179,5 @@ NDH_TEMPLATES_SETTINGS = [
 AUTHENTICATION_BACKENDS = ["yeouia.backends.YummyEmailOrUsernameInsensitiveAuth"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+WAGTAILADMIN_BASE_URL = "https://caracole.io"

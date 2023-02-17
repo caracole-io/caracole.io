@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "wagtail.core",
     "modelcluster",
     "taggit",
-    "bootstrap4",
+    "django_bootstrap5",
     # "videgrenier",
 ]
 

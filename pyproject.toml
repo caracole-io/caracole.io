@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ndh = "^3.10.4"
+ndh = "^5.0.0"
 wagtail = "^2.12.3"
 django-registration-redux = "^2.9"
 django-yeouia = "^2.0.0"

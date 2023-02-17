@@ -101,9 +101,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.fields.RichTextField(
-                        blank=True, verbose_name="contenu"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="contenu"),
                 ),
                 (
                     "img",
@@ -230,9 +228,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.fields.RichTextField(
-                        blank=True, verbose_name="contenu"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="contenu"),
                 ),
             ],
             options={
@@ -298,9 +294,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "content",
-                    wagtail.fields.RichTextField(
-                        blank=True, verbose_name="contenu"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="contenu"),
                 ),
             ],
             options={
@@ -369,9 +363,7 @@ class Migration(migrations.Migration):
                 ("title", models.CharField(max_length=250, verbose_name="titre")),
                 (
                     "content",
-                    wagtail.fields.RichTextField(
-                        blank=True, verbose_name="contenu"
-                    ),
+                    wagtail.fields.RichTextField(blank=True, verbose_name="contenu"),
                 ),
             ],
             options={

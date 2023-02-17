@@ -20,7 +20,7 @@ urlpatterns = [
     path("mail-contact/", views.mail_contact, name="mail-contact"),
     path("documents/", include(wagtaildocs_urls)),
     # path('videgrenier/', include('videgrenier.urls')),
-    path('vide-grenier/', RedirectView.as_view(url='/videgrenier/', permanent=True)),
+    path("vide-grenier/", RedirectView.as_view(url="/videgrenier/", permanent=True)),
     path("blog/tag/<slug>", DetailView.as_view(model=Tag), name="tag"),
     path("", include(wagtail_urls)),
 ]

@@ -14,8 +14,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="accueil",
             name="permanences",
-            field=wagtail.fields.RichTextField(
-                blank=True, verbose_name="permanences"
-            ),
+            field=wagtail.fields.RichTextField(blank=True, verbose_name="permanences"),
         ),
     ]

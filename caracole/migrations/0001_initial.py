@@ -285,7 +285,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Contact",
             fields=[
-<<<<<<< HEAD
                 (
                     "page_ptr",
                     models.OneToOneField(
@@ -303,16 +302,6 @@ class Migration(migrations.Migration):
                         blank=True, verbose_name="contenu"
                     ),
                 ),
-=======
-                ('page_ptr',
-                 models.OneToOneField(auto_created=True,
-                                      on_delete=django.db.models.deletion.CASCADE,
-                                      parent_link=True,
-                                      primary_key=True,
-                                      serialize=False,
-                                      to='wagtailcore.Page')),
-                ('content', wagtail.fields.RichTextField(blank=True, verbose_name='contenu')),
->>>>>>> c51982a (wagtail updatemodulepaths)
             ],
             options={
                 "abstract": False,
@@ -364,7 +353,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Rubrique",
             fields=[
-<<<<<<< HEAD
                 (
                     "id",
                     models.AutoField(
@@ -385,12 +373,6 @@ class Migration(migrations.Migration):
                         blank=True, verbose_name="contenu"
                     ),
                 ),
-=======
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('title', models.CharField(max_length=250, verbose_name='titre')),
-                ('content', wagtail.fields.RichTextField(blank=True, verbose_name='contenu')),
->>>>>>> c51982a (wagtail updatemodulepaths)
             ],
             options={
                 "ordering": ["sort_order"],
@@ -420,7 +402,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Evenements",
             fields=[
-<<<<<<< HEAD
                 (
                     "carapage_ptr",
                     models.OneToOneField(
@@ -443,22 +424,6 @@ class Migration(migrations.Migration):
                         to="wagtailimages.Image",
                     ),
                 ),
-=======
-                ('carapage_ptr',
-                 models.OneToOneField(auto_created=True,
-                                      on_delete=django.db.models.deletion.CASCADE,
-                                      parent_link=True,
-                                      primary_key=True,
-                                      serialize=False,
-                                      to='caracole.CaraPage')),
-                ('zoom_titre', models.CharField(max_length=200)),
-                ('zoom_description', wagtail.fields.RichTextField()),
-                ('zoom_image',
-                 models.ForeignKey(null=True,
-                                   on_delete=django.db.models.deletion.SET_NULL,
-                                   related_name='+',
-                                   to='wagtailimages.Image')),
->>>>>>> c51982a (wagtail updatemodulepaths)
             ],
             options={
                 "abstract": False,

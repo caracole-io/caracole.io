@@ -6,9 +6,10 @@ from wagtail import hooks
 @hooks.register("register_rich_text_features")
 def register_blockquote_feature(features):
     """
-    https://docs.wagtail.io/en/v2.3/advanced_topics/customisation/extending_draftail.html#creating-new-blocks
-    Registering the `blockquote` feature, which uses the `blockquote` Draft.js block type,
-    and is stored as HTML with a `<blockquote>` tag.
+    https://docs.wagtail.io/en/v2.3/advanced_topics/customisation/
+        extending_draftail.html#creating-new-blocks
+    Registering the `blockquote` feature, which uses the `blockquote` Draft.js block
+    type, and is stored as HTML with a `<blockquote>` tag.
     """
     feature_name = "blockquote"
     type_ = "blockquote"
@@ -18,7 +19,8 @@ def register_blockquote_feature(features):
         "type": type_,
         "label": "❝",
         "description": "Blockquote",
-        # Optionally, we can tell Draftail what element to use when displaying those blocks in the editor.
+        # Optionally, we can tell Draftail what element to use
+        # when displaying those blocks in the editor.
         "element": "blockquote",
     }
 

@@ -37,10 +37,10 @@ repos:
         #-   django-tables2
         #-   types-setuptools
         #-   ndh
-#-   repo: https://github.com/psf/black
-    #rev: 22.12.0
-    #hooks:
-    #-   id: black
+-   repo: https://github.com/psf/black
+    rev: 22.12.0
+    hooks:
+    -   id: black
 -   repo: https://github.com/asottile/pyupgrade
     rev: v3.3.1
     hooks:

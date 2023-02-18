@@ -22,7 +22,7 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     netcat \
  && python -m pip install -U pip \
  && python -m pip install -U pipx \
- && PYTHON -M pipx install poetry
+ && python -m pipx install poetry
 
 ENV PATH=/root/.local/bin:$PATH
 ADD pyproject.toml poetry.lock ./

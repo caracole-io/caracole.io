@@ -647,6 +647,27 @@ pycodestyle = ">=2.7.0,<2.8.0"
 pyflakes = ">=2.3.0,<2.4.0"
 
 [[package]]
+name = "gunicorn"
+version = "20.1.0"
+description = "WSGI HTTP Server for UNIX"
+category = "dev"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
+    {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
+]
+
+[package.dependencies]
+setuptools = ">=3.0"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "html5lib"
 version = "1.1"
 description = "HTML parser based on the WHATWG HTML specification"
@@ -1128,6 +1149,17 @@ files = [
 wcwidth = "*"
 
 [[package]]
+name = "psycopg2"
+version = "2.9.5"
+description = "psycopg2 - Python-PostgreSQL Database Adapter"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "psycopg2-2.9.5.tar.gz", hash = "sha256:a5246d2e683a972e2187a8714b5c2cf8156c064629f9a9b1a873c1730d9e245a"},
+]
+
+[[package]]
 name = "ptyprocess"
 version = "0.7.0"
 description = "Run a subprocess in a pseudo terminal"
@@ -1234,6 +1266,21 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-memcached"
+version = "1.59"
+description = "Pure python memcached client"
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-memcached-1.59.tar.gz", hash = "sha256:a2e28637be13ee0bf1a8b6843e7490f9456fd3f2a4cb60471733c7b5d5557e4f"},
+    {file = "python_memcached-1.59-py2.py3-none-any.whl", hash = "sha256:4dac64916871bd3550263323fc2ce18e1e439080a2d5670c594cf3118d99b594"},
+]
+
+[package.dependencies]
+six = ">=1.4.0"
 
 [[package]]
 name = "pytz"
@@ -1646,4 +1693,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "cd03cb75ae99a7eeb5affa196b3ea6caced564c09b4c08be0515bcc17aa738c2"
+content-hash = "44163cc308f2732a6d49e1e0ea9638778ac5e455575d2a5a707b0745e979ae54"

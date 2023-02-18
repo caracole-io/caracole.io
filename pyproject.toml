@@ -24,6 +24,14 @@ ipython = "^8.10.0"
 pygments-zenburn = "^0.9.0"
 safety = "^2.3.5"
 
+[tool.poetry.group.prod]
+optional = true
+
+[tool.poetry.group.prod.dependencies]
+gunicorn = "^20.1.0"
+psycopg2 = "^2.9.5"
+python-memcached = "^1.59"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

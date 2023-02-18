@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11
 
 EXPOSE 8000
 
@@ -7,30 +7,27 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 
 CMD while ! nc -z postgres 5432; do sleep 1; done \
- && ./manage.py migrate \
- && ./manage.py collectstatic --no-input \
- && gunicorn \
+ && poetry run ./manage.py migrate \
+ && poetry run ./manage.py collectstatic --no-input \
+ && poetry run gunicorn \
     --bind 0.0.0.0 \
     caracole.wsgi
 
-RUN apt-get update -qqy \
- && apt-get install -qqy \
+RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
+    --mount=type=cache,sharing=locked,target=/var/lib/apt \
+    --mount=type=cache,sharing=locked,target=/root/.cache \
+    apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends \
     gcc \
     libpq-dev \
     netcat \
- && pip3 install --no-cache-dir -U pip \
- && pip3 install --no-cache-dir \
-    gunicorn \
-    poetry \
-    psycopg2 \
-    python-memcached \
-    raven \
-    requests \
- && apt-get autoremove -qqy gcc \
- && rm -rf /var/lib/apt/lists/*
+ && python -m pip install -U pip \
+ && python -m pip install -U pipx \
+ && PYTHON -M pipx install poetry
 
+ENV PATH=/root/.local/bin:$PATH
 ADD pyproject.toml poetry.lock ./
-RUN poetry config virtualenvs.create false --local \
- && poetry install --no-dev --no-root --no-interaction --no-ansi
+RUN --mount=type=cache,sharing=locked,target=/root/.cache \
+    python -m venv .venv \
+ && poetry install --with prod --no-root --no-interaction --no-ansi
 
 ADD . .

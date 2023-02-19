@@ -25,7 +25,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item {% if request.path == '/' %}active{% endif %}"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
               {% for section in sections %}
@@ -76,21 +76,27 @@
 <section>
   <div class="container sepBreadcrumb">
     <div class="row justify-content-between">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-          {% block breadcrumb %}
-          {% if page.get_parent.title != "Root" and page.get_parent.title != "Caracole ! Qu'es aquo ?" %}
-          <li class="breadcrumb-item">{{ page.get_parent }}</li>
-          {% endif %}
-          <li class="breadcrumb-item active" aria-current="page">{% if page.nom %}{{ page.nom }}{% else %}{{ page.title }}{% endif %}</li>
-          {% endblock %}
-        </ol>
-      </nav>
-      <div class="col-4">
-        <form class="form-inline justify-content-end">
-          <input class="form-control mr-sm-2" type="search" placeholder="Chercher" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+            {% block breadcrumb %}
+            {% if page.get_parent.title != "Root" and page.get_parent.title != "Caracole ! Qu'es aquo ?" %}
+            <li class="breadcrumb-item">{{ page.get_parent }}</li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">{% if page.nom %}{{ page.nom }}{% else %}{{ page.title }}{% endif %}</li>
+            {% endblock %}
+          </ol>
+        </nav>
+      </div>
+      <div class="col">
+        <form class="row g-2 justify-content-end">
+          <div class="col-auto">
+            <input class="form-control" type="search" placeholder="Chercher" aria-label="Search">
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+          </div>
         </form>
       </div>
     </div>

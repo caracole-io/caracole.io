@@ -1,6 +1,6 @@
 import os
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -91,7 +91,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / DB,
-    }
+    },
 }
 if DB == "postgres":
     DATABASES["default"].update(
@@ -121,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "fr")
 TIME_ZONE = os.environ.get("TIME_ZONE", "Europe/Paris")
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 SITE_ID = int(os.environ.get("SITE_ID", 1))
@@ -142,14 +141,6 @@ DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>"
 SERVER_EMAIL = f"Server {DEFAULT_FROM_EMAIL}"
 REPLY_TO = f"webmaster@{HOSTNAME}"
 ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{HOSTNAME}")]
-
-if os.environ.get("MEMCACHED", "False").lower() == "true":
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-            "LOCATION": "memcached:11211",
-        }
-    }
 
 if not DEBUG and os.environ.get("RAVEN", "False").lower() == "true":
     INSTALLED_APPS.append("raven.contrib.django.raven_compat")

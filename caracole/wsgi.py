@@ -1,5 +1,4 @@
-"""
-WSGI config for caracole project.
+"""WSGI config for caracole project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

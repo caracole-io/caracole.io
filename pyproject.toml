@@ -1,28 +1,39 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[tool.isort]
+known_django = "django"
+profile = "black"
+sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+
 [tool.poetry]
-name = "caracole.io"
-version = "0.1.0"
-description = "caracole.io website"
 authors = ["Guilhem Saurel <webmaster@caracole.io>"]
+description = "caracole.io website"
 license = "BSD-2-Clause"
+name = "caracole.io"
 readme = "README.md"
+version = "0.1.0"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-ndh = "^5.12.1"
-wagtail = "^3.0.0"
 django-registration-redux = "^2.9"
 django-yeouia = "^2.0.0"
 dmdm = "^1.4.3"
+ipython = "^8.11.0"
+ndh = "^5.12.1"
+python = "^3.10"
+wagtail = "^4.1.0"
 
 [tool.poetry.group.dev]
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-coverage = "^5.5"
-flake8 = "^3.9.0"
-ipython = "^8.10.0"
+black = "^23.1.0"
+coverage = "^7.2.1"
+isort = "^5.12.0"
 pygments-zenburn = "^0.9.0"
-safety = "^2.3.5"
+ruff = "^0.0.254"
+safety = {allow-prereleases = true, version = "^2.4.0b1"}
 
 [tool.poetry.group.prod]
 optional = true
@@ -30,8 +41,13 @@ optional = true
 [tool.poetry.group.prod.dependencies]
 gunicorn = "^20.1.0"
 psycopg2 = "^2.9.5"
-python-memcached = "^1.59"
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+allowed-confusables = [" "]
+extend-exclude = ["migrations"]
+extend-ignore = ["D203", "D213"]
+extend-select = ["A", "B", "C", "COM", "DJ", "EM", "EXE", "G", "N", "PTH", "RET", "RUF", "UP", "W", "YTT"]
+target-version = "py310"
+
+[tool.tomlsort]
+all = true

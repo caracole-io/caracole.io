@@ -12,7 +12,8 @@ class CaramelView(CreateView):
 
     def form_valid(self, form):
         messages.success(
-            self.request, "Votre inscription au Caramel a bien été prise en compte"
+            self.request,
+            "Votre inscription au Caramel a bien été prise en compte",
         )
         return super().form_valid(form)
 
@@ -21,9 +22,8 @@ def mail_contact(request):
     if request.method == "POST":
         print(request.POST)
 
-        print(
-            f'To: {request.POST["form_dest"]}@{settings.PROJECT}.{settings.DOMAIN_NAME}'
-        )
+        mail = f'{request.POST["form_dest"]}@{settings.PROJECT}.{settings.DOMAIN_NAME}'
+        print(f"To: {mail}")
         print(f'Reply-To: {request.POST["form_name"]} <{request.POST["form_adress"]}>')
         print("Subject: Message envoyé depuis le site")
         print()

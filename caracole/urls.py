@@ -5,8 +5,8 @@ from django.urls import include, path
 from django.views.generic import DetailView, RedirectView
 
 from taggit.models import Tag
-from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
+from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from . import views

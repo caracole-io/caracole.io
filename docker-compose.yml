@@ -8,9 +8,6 @@ services:
       - .env
     volumes:
       - "${CHATONS_ROOT_DIR:-/srv/chatons}/caracole.io/sql:/var/lib/postgresql/data"
-  memcached:
-    image: memcached:alpine
-    restart: unless-stopped
   app:
     image: caracole/caracole.io
     build: .

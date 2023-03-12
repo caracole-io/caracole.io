@@ -142,10 +142,6 @@ SERVER_EMAIL = f"Server {DEFAULT_FROM_EMAIL}"
 REPLY_TO = f"webmaster@{HOSTNAME}"
 ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{HOSTNAME}")]
 
-if not DEBUG and os.environ.get("RAVEN", "False").lower() == "true":
-    INSTALLED_APPS.append("raven.contrib.django.raven_compat")
-    RAVEN_CONFIG = {"dsn": os.environ["DSN"]}
-
 ACCOUNT_ACTIVATION_DAYS = 15
 REGISTRATION_AUTO_LOGIN = True
 

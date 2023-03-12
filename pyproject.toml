@@ -18,7 +18,7 @@ version = "0.1.0"
 [tool.poetry.dependencies]
 django-registration-redux = "^2.9"
 django-yeouia = "^2.0.0"
-dmdm = "^1.4.3"
+dmdm = "^2.0.3"
 ipython = "^8.11.0"
 ndh = "^5.12.1"
 python = "^3.10"

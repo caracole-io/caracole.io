@@ -565,19 +565,19 @@ pytz = "*"
 
 [[package]]
 name = "dmdm"
-version = "1.4.5"
+version = "2.0.3"
 description = "Django MarkDown Mails"
 category = "main"
 optional = false
-python-versions = ">=3.6.2,<4.0.0"
+python-versions = ">=3.7,<4.0"
 files = [
-    {file = "dmdm-1.4.5-py3-none-any.whl", hash = "sha256:022b5bfe13087d638814822e28b59cbeb30aaffec17e80107be46da07148a640"},
-    {file = "dmdm-1.4.5.tar.gz", hash = "sha256:8fad1c97f336d81d19fd6272d4f8a7496147aa95cf1266ed21d1df69266c5b2e"},
+    {file = "dmdm-2.0.3-py3-none-any.whl", hash = "sha256:c8efa86d7a6c11d997d38167e0af2ad4082796b0971b5adf0d03eddc888473a3"},
+    {file = "dmdm-2.0.3.tar.gz", hash = "sha256:b3be786df928d5a591868240d698a6579f4ef4cfbd2d5c3c07d13687c82cb5f2"},
 ]
 
 [package.dependencies]
-Django = ">=2.2"
-mdmail = ">=0.1.3,<0.2.0"
+Django = ">=2.2,<5.0"
+nmdmail = ">=0.3.0,<0.4.0"
 
 [[package]]
 name = "dparse"
@@ -1034,25 +1034,6 @@ files = [
 traitlets = "*"
 
 [[package]]
-name = "mdmail"
-version = "0.1.3"
-description = "Send email written in Markdown"
-category = "main"
-optional = false
-python-versions = "*"
-files = [
-    {file = "mdmail-0.1.3.tar.gz", hash = "sha256:57a3ab44ff0824769b36e99f8837bce5a90df736be54c09bcc36e22e93cad041"},
-]
-
-[package.dependencies]
-beautifulsoup4 = "*"
-emails = "*"
-lxml = "*"
-markdown = "*"
-premailer = "*"
-six = "*"
-
-[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
@@ -1079,6 +1060,25 @@ files = [
 [package.dependencies]
 django-autoslug = ">=1.9.8,<2.0.0"
 django-bootstrap5 = ">=22.1,<23.0"
+
+[[package]]
+name = "nmdmail"
+version = "0.3.1"
+description = "Send emails written in Markdown"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+files = [
+    {file = "nmdmail-0.3.1-py3-none-any.whl", hash = "sha256:fa382fd1f71e01dc69934d3070eca8036ddb4f3a4842eb3daec42a4e22d607e1"},
+    {file = "nmdmail-0.3.1.tar.gz", hash = "sha256:1d53fe6c400452f5ce85c3ec38af8c17323638d845c8253693c0acedf125599b"},
+]
+
+[package.dependencies]
+beautifulsoup4 = ">=4.11.1,<5.0.0"
+emails = ">=0.6,<0.7"
+lxml = ">=4.9.1,<5.0.0"
+Markdown = ">=3.4.1,<4.0.0"
+premailer = ">=3.10.0,<4.0.0"
 
 [[package]]
 name = "openpyxl"
@@ -1771,4 +1771,4 @@ testing = ["Pillow (>=6.0.0,<10.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "6301f9d349deea024b5a79a2ca1eb631d71d8daaa3eebeaf796e494748f4a1cb"
+content-hash = "e211a90daaaa62e5f771fe9d855bbd63a37bcd83b3b017276081bc0ad4f0aa5b"

@@ -22,7 +22,7 @@ dmdm = "^2.0.3"
 ipython = "^8.11.0"
 ndh = "^5.12.1"
 python = "^3.10"
-wagtail = "^4.1.0"
+wagtail = "^4.2.1"
 
 [tool.poetry.group.dev]
 optional = true

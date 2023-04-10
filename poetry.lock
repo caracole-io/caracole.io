@@ -1047,14 +1047,14 @@ files = [
 
 [[package]]
 name = "ndh"
-version = "6.0.0"
+version = "6.2.0"
 description = "Nim's Django Helpers"
 category = "main"
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "ndh-6.0.0-py3-none-any.whl", hash = "sha256:bdec01d2999a76c9f5ad70d3ac38191a2344671e0aa68d111eff30e25ad4f4da"},
-    {file = "ndh-6.0.0.tar.gz", hash = "sha256:497f4ecd2f2e6c291aa7cf7cfec8143bd658679dcaef1b5930ca8242e98033a0"},
+    {file = "ndh-6.2.0-py3-none-any.whl", hash = "sha256:1a53dd3f2175cec02dcee07545b94398be24443f53b6a0ccea0d9b8716c4691a"},
+    {file = "ndh-6.2.0.tar.gz", hash = "sha256:e1ca449c189cbdba5e2dd0e9af421ed980827279c8444fdc3a8f6b27ed65d3fa"},
 ]
 
 [package.dependencies]
@@ -1786,4 +1786,4 @@ testing = ["Pillow (>=6.0.0,<10.0.0)", "Wand (>=0.6,<1.0)", "mock (>=3.0,<4.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "cce8d8b3cf04091684d4699f8bc66467be67d889a957d162b36a1e81905ef7d3"
+content-hash = "bc526d50dd1aa7022b79813af4765fa950b12ac1f0a873589ef371d6b566fd22"

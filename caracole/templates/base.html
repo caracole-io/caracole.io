@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <nav class="navbar navbar-expand-lg navbar-light z-index">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
@@ -30,7 +30,7 @@
               <li class="nav-item {% if request.path == '/' %}active{% endif %}"><a class="nav-link" href="/"><i class="fa fa-home"></i></a></li>
               {% for section in sections %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {% if section.slug in request.path %}active {% endif %}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ section.title }}</a>
+                <a class="nav-link dropdown-toggle {% if section.slug in request.path %}active {% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ section.title }}</a>
                 <div id="menu{{ section.slug  }}" class="dropdown-menu" aria-labelledby="menu{{ section.slug  }}">
                   {% for page in section.get_children.live.in_menu %}
                   <a class="dropdown-item" href="{% pageurl page %}">{{ page.carapage.nom }}</a>
@@ -40,7 +40,7 @@
               {% endfor %}
               {% comment %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                <a class="nav-link dropdown-toggle" id="videgrenierDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                   Vide Grenier
                 </a>
                 <div class="dropdown-menu" aria-labelledby="videgrenierDropdown">

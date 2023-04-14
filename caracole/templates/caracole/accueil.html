@@ -53,9 +53,9 @@
         <h3><i class="fa fa-calendar"></i> Les événements à venir</h3>
         <ul class="list-unstyled">
           {% for evenement in evenements|slice:":3" %}
-          <li class="media">
-            {% image evenement.image fill-94x94 class="mr-3 img-thumbnail" %}
-            <div class="media-body mb-2">
+          <li class="media d-flex">
+            {% image evenement.image fill-94x94 class="me-3 img-thumbnail flex-shrink-0" %}
+            <div class="media-body mb-2 flex-grow-1">
               <p class="dateDesc">{{ evenement.date|date:"D d b Y" }} - {{ evenement.horaires }}</p>
               <h6 class="mt-0 mb-1">{{ evenement.titre }}</h6>
               <!-- Extrait 95 caractères -->

@@ -34,8 +34,8 @@
         {% for evenement in page.evenement.all %}
         <div class="evenementAutre clearfix">
           <!-- Si pas image dans annonce, image standard neutre_94x94.png -->
-          <div class="evenementAutreCaption">
-            {% image evenement.image fill-94x94 class="img-fluid float-left" %}
+          <div class="evenementAutreCaption clearfix">
+            {% image evenement.image fill-94x94 class="img-fluid float-start" %}
             <p class="font-weight-bold">{{ evenement.date|date:"D // d M // Y" }}</p>
             <h4>{{ evenement.titre }}</h4>
             <p>{{ evenement.description|truncatechars:38 }}<br>{{ evenement.lieu }} - {{ evenement.horaires }}.</p>

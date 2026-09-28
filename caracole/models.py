@@ -1,5 +1,4 @@
 from django.db import models
-
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from ndh.models import TimeStampedModel
